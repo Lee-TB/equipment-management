@@ -1,0 +1,84 @@
+{
+  "devices": [
+    {
+      "id": "TB001",
+      "name": "Máy tính xách tay",
+      "model": "Dell XPS 13",
+      "type": "Máy tính",
+      "status": "Hoạt động tốt",
+      "quantity": 5
+    },
+    {
+      "id": "TB002",
+      "name": "Máy tính để bàn",
+      "model": "HP Pavilion Gaming Desktop",
+      "type": "Máy tính",
+      "status": "Đang bảo trì",
+      "quantity": 2
+    },
+    {
+      "id": "PR001",
+      "name": "Máy in",
+      "model": "HP LaserJet Pro MFP M428fdw",
+      "type": "Máy văn phòng",
+      "status": "Hoạt động tốt",
+      "quantity": 3
+    },
+    {
+      "id": "PR002",
+      "name": "Máy scan",
+      "model": "Canon CanoScan LiDE 400",
+      "type": "Máy văn phòng",
+      "status": "Đang bảo trì",
+      "quantity": 1
+    },
+    {
+      "id": "MN001",
+      "name": "Máy nghe nhạc",
+      "model": "Sony Walkman NW-A105",
+      "type": "Thiết bị âm thanh",
+      "status": "Hoạt động tốt",
+      "quantity": 2
+    },
+    {
+      "id": "SP001",
+      "name": "Loa Bluetooth",
+      "model": "JBL Flip 5",
+      "type": "Thiết bị âm thanh",
+      "status": "Hoạt động tốt",
+      "quantity": 3
+    },
+    {
+      "id": "TB003",
+      "name": "Máy tính bảng đồ họa",
+      "model": "Wacom Intuos Pro",
+      "type": "Thiết bị đồ họa",
+      "status": "Hoạt động tốt",
+      "quantity": 1
+    },
+    {
+      "id": "KT001",
+      "name": "Kính thực tế ảo",
+      "model": "Oculus Quest 2",
+      "type": "Thiết bị giải trí",
+      "status": "Hoạt động tốt",
+      "quantity": 1
+    },
+    {
+      "id": "CM001",
+      "name": "Máy chấm công",
+      "model": "ZKTeco UA300",
+      "type": "Máy văn phòng",
+      "status": "Hoạt động tốt",
+      "quantity": 2
+    },
+    {
+      "id": "TN001",
+      "name": "Máy tính tiền",
+      "model": "Casio QT-6600",
+      "type": "Thiết bị bán hàng",
+      "status": "Hoạt động tốt",
+      "quantity": 4
+    }
+  ]
+}
