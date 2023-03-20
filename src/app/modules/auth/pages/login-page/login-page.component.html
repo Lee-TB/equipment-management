@@ -1,1 +1,63 @@
-<p>login-page works!</p>
+<!-- component -->
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <div class="flex flex-col justify-center sm:py-12 scale-150">
+    <div class="p-10 xs:p-0 mx-auto md:w-full md:max-w-md">
+      <h1 class="font-bold text-center text-2xl mb-5">
+        <img
+          src="../../../../../assets/images/tma-logo.png"
+          alt="TMA Logo"
+          class="w-20"
+        />
+      </h1>
+      <div class="bg-white shadow w-full rounded-lg divide-y divide-gray-200">
+        <div class="px-5 py-7">
+          <label class="font-semibold text-sm text-gray-600 pb-1 block"
+            >Username</label
+          >
+          <input
+            formControlName="username"
+            type="text"
+            class="border rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full"
+          />
+          <label class="font-semibold text-sm text-gray-600 pb-1 block"
+            >Password</label
+          >
+          <input
+            formControlName="password"
+            [type]="hidePassword ? 'password' : 'text'"
+            class="border rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full"
+          />
+          <button
+            [disabled]="loading"
+            type="submit"
+            class="transition duration-200 bg-blue-500 hover:bg-blue-600 focus:bg-blue-700 focus:shadow-sm focus:ring-4 focus:ring-blue-500 focus:ring-opacity-50 text-white w-full py-2.5 rounded-lg text-sm shadow-sm hover:shadow-md font-semibold text-center inline-block"
+          >
+            <div *ngIf="loading" class="flex items-center justify-center">
+              <div
+                class="h-5 w-5 border-t-transparent border-solid animate-spin rounded-full border-white border-4"
+              ></div>
+            </div>
+
+            <div *ngIf="!loading">
+              <span class="inline-block mr-2">Login</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                class="w-4 h-4 inline-block"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M17 8l4 4m0 0l-4 4m4-4H3"
+                />
+              </svg>
+            </div>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

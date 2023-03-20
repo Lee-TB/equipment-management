@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
-// import { NzButtonModule } from 'ng-zorro-antd/button';
+import { ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 import { AuthRoutingModule } from './auth-routing.module';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { RegisterPageComponent } from './pages/register-page/register-page.component';
 
 @NgModule({
+  imports: [AuthRoutingModule, ReactiveFormsModule, CommonModule],
   declarations: [LoginPageComponent, RegisterPageComponent],
-  imports: [AuthRoutingModule],
 })
 export class AuthModule {}
