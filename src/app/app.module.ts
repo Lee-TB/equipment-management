@@ -10,6 +10,7 @@ import { ContentLayoutComponent } from './layouts/content-layout/content-layout.
 import { PageNotFoundComponent } from './layouts/page-not-found/page-not-found.component';
 import { HeaderComponent } from './layouts/header/header.component';
 import { FooterComponent } from './layouts/footer/footer.component';
+import { SidebarComponent } from './layouts/sidebar/sidebar.component';
 
 @NgModule({
   imports: [
@@ -25,6 +26,7 @@ import { FooterComponent } from './layouts/footer/footer.component';
     HeaderComponent,
     FooterComponent,
     PageNotFoundComponent,
+    SidebarComponent,
   ],
   providers: [],
   bootstrap: [AppComponent],
