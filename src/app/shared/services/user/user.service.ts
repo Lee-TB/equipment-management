@@ -43,6 +43,11 @@ export class UserService {
     );
   }
 
+  logout() {
+    this.removeAccessToken();
+    this.removeRefreshToken;
+  }
+
   isLoggedIn() {
     const accessToken = this.getAccessToken();
     return Boolean(accessToken);
@@ -66,5 +71,15 @@ export class UserService {
   /** Lấy refreshToken từ local storage */
   getRefreshToken() {
     return localStorage.getItem('refreshToken');
+  }
+
+  /** Xóa accessToken trong local storage */
+  removeAccessToken() {
+    return localStorage.removeItem('accessToken');
+  }
+
+  /** Xóa refreshToken trong local storage */
+  removeRefreshToken() {
+    return localStorage.removeItem('refreshToken');
   }
 }

@@ -4,6 +4,7 @@ import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component
 import { ContentLayoutComponent } from './layouts/content-layout/content-layout.component';
 import { PageNotFoundComponent } from './layouts/page-not-found/page-not-found.component';
 import { AuthGuard } from './shared/guards/auth.guard';
+import { LogoutComponent } from './shared/components/logout/logout.component';
 
 const routes: Routes = [
   {
@@ -25,6 +26,10 @@ const routes: Routes = [
     component: AuthLayoutComponent,
     loadChildren: () =>
       import('./modules/auth/auth.module').then((m) => m.AuthModule),
+  },
+  {
+    path: 'logout',
+    component: LogoutComponent,
   },
   // Fallback when no prior routes is matched
   { path: '**', redirectTo: '/page-not-found', pathMatch: 'full' },

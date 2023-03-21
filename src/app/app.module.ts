@@ -11,6 +11,7 @@ import { PageNotFoundComponent } from './layouts/page-not-found/page-not-found.c
 import { HeaderComponent } from './layouts/header/header.component';
 import { FooterComponent } from './layouts/footer/footer.component';
 import { SidebarComponent } from './layouts/sidebar/sidebar.component';
+import { LogoutComponent } from './shared/components/logout/logout.component';
 
 @NgModule({
   imports: [
@@ -27,6 +28,7 @@ import { SidebarComponent } from './layouts/sidebar/sidebar.component';
     FooterComponent,
     PageNotFoundComponent,
     SidebarComponent,
+    LogoutComponent,
   ],
   providers: [],
   bootstrap: [AppComponent],
