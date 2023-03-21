@@ -3,17 +3,13 @@ import { Routes, RouterModule } from '@angular/router';
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
 import { ContentLayoutComponent } from './layouts/content-layout/content-layout.component';
 import { PageNotFoundComponent } from './layouts/page-not-found/page-not-found.component';
+import { AuthGuard } from './shared/guards/auth.guard';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/auth/login',
-    pathMatch: 'full',
-  },
-  {
-    path: '',
     component: ContentLayoutComponent,
-    canActivate: [], // Should be replaced with actual auth guard
+    canActivate: [AuthGuard],
     children: [
       {
         path: 'equipments',
