@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { EquipmentPageComponent } from './pages/equipment-page/equipment-page.component';
+import { EquipmentTableComponent } from './components/equipment-table/equipment-table.component';
 
 const routes: Routes = [
   {
@@ -10,7 +10,7 @@ const routes: Routes = [
   },
   {
     path: 'table',
-    component: EquipmentPageComponent,
+    component: EquipmentTableComponent,
   },
 ];
 
