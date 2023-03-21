@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { EquipmentTableComponent } from './components/equipment-table/equipment-table.component';
+import { EquipmentFormComponent } from './components/equipment-form/equipment-form.component';
 
 const routes: Routes = [
   {
@@ -11,6 +12,10 @@ const routes: Routes = [
   {
     path: 'table',
     component: EquipmentTableComponent,
+  },
+  {
+    path: 'new',
+    component: EquipmentFormComponent,
   },
 ];
 
