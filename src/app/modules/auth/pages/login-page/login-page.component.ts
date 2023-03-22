@@ -31,11 +31,6 @@ export class LoginPageComponent {
 
     this.userService.login(loginData).subscribe((value: any) => {
       if (value) {
-        console.log({
-          userService: this.userService.user,
-          userMessage: this.userService.message,
-          userStatusCode: this.userService.statusCode,
-        });
         this.loading = false;
         this.router.navigate(['']);
       }
