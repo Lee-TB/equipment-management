@@ -45,7 +45,7 @@ export class UserService {
 
   logout() {
     this.removeAccessToken();
-    this.removeRefreshToken;
+    this.removeRefreshToken();
   }
 
   isLoggedIn() {
