@@ -24,17 +24,27 @@ export class LoginPageComponent {
   ) {}
 
   onSubmit() {
-    this.loading = true;
-    const loginData: LoginDataType = {
-      username: this.loginForm.value.username || '',
-      password: this.loginForm.value.password || '',
-    };
+    if (this.loginForm.valid) {
+      this.loading = true;
+      const loginData: LoginDataType = {
+        username: this.loginForm.value.username || '',
+        password: this.loginForm.value.password || '',
+      };
 
-    this.userService.login(loginData).subscribe((value: any) => {
-      if (value) {
-        this.loading = false;
-        this.router.navigate(['']);
-      }
-    });
+      const observer = {
+        next: (value: any) => {
+          if (value) {
+            console.log('login success: ', value);
+            this.router.navigate(['']);
+          }
+        },
+        error: (error: any) => {
+          console.log('login error: ', error.error.message);
+        },
+      };
+
+      this.userService.login(loginData).subscribe(observer);
+      this.loading = false;
+    }
   }
 }
