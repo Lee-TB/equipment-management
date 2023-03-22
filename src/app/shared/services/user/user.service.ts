@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { tap, catchError, map } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { LoginDataType, User } from '../../schemas/user';
 
 @Injectable({
@@ -37,7 +37,6 @@ export class UserService {
         this.statusCode = value.statusCode;
         this.setAccessToken(this.user.accessToken);
         this.setRefreshToken(this.user.refreshToken);
-        this.isLoggedIn();
         return value;
       })
     );
