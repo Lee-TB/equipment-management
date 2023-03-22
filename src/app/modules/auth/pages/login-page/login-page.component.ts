@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginDataType } from 'src/app/shared/schemas/user';
 import { UserService } from 'src/app/shared/services/user/user.service';
@@ -11,9 +11,10 @@ import { UserService } from 'src/app/shared/services/user/user.service';
 })
 export class LoginPageComponent {
   loginForm = this.formBuilder.group({
-    username: '',
-    password: '',
+    username: ['', Validators.required],
+    password: ['', Validators.required],
   });
+
   loading = false;
   hidePassword = true;
   constructor(
