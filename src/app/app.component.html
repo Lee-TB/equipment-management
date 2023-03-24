@@ -1,1 +1,7 @@
+<div class="relative" [ngClass]="isAlert ? 'block' : 'hidden'">
+  <div class="absolute top-2 right-1/2 translate-x-1/2 w-80">
+    <app-alert [type]="alertType" [content]="alertContent"></app-alert>
+  </div>
+</div>
+
 <router-outlet></router-outlet>

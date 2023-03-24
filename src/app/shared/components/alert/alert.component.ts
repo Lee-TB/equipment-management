@@ -1,14 +1,15 @@
 import { Component, Input } from '@angular/core';
 import { Dismiss } from 'flowbite';
 
+export type AlertType = 'success' | 'error' | 'warning' | 'info' | 'default';
+
 @Component({
   selector: 'app-alert',
   templateUrl: './alert.component.html',
   styleUrls: ['./alert.component.css'],
 })
 export class AlertComponent {
-  @Input() type: 'success' | 'error' | 'warning' | 'info' | 'default' =
-    'default';
+  @Input() type: AlertType = 'default';
   @Input() content: string = '';
 
   onClose(event: Event, targetElement: HTMLElement) {
@@ -22,10 +23,7 @@ export class AlertComponent {
       timing: 'ease-out',
 
       // callback functions
-      onHide: (context: any, targetEl: any) => {
-        console.log('element has been dismissed');
-        console.log(targetEl);
-      },
+      onHide: (context: any, targetEl: any) => {},
     };
 
     const dismiss = new Dismiss(targetElement, triggerElement, options);

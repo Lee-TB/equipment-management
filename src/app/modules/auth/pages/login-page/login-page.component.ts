@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginDataType } from 'src/app/shared/schemas/user';
+import { AlertService } from 'src/app/shared/services/alert/alert.service';
 import { UserService } from 'src/app/shared/services/user/user.service';
 
 @Component({
@@ -20,6 +21,7 @@ export class LoginPageComponent {
   constructor(
     private formBuilder: FormBuilder,
     private userService: UserService,
+    private alertService: AlertService,
     private router: Router
   ) {}
 
@@ -34,12 +36,16 @@ export class LoginPageComponent {
       const observer = {
         next: (value: any) => {
           if (value) {
-            console.log('login success: ', value);
+            this.alertService.setType('success');
+            this.alertService.setContent('Login success!');
+            this.alertService.setDuration(2000);
             this.router.navigate(['']);
           }
         },
         error: (error: any) => {
-          console.log('login error: ', error.error.message);
+          this.alertService.setType('error');
+          this.alertService.setContent(error.error.message);
+          this.alertService.setDuration(2000);
         },
       };
 

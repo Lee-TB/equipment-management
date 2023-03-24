@@ -12,6 +12,7 @@ import { HeaderComponent } from './layouts/header/header.component';
 import { FooterComponent } from './layouts/footer/footer.component';
 import { SidebarComponent } from './layouts/sidebar/sidebar.component';
 import { LogoutComponent } from './shared/components/logout/logout.component';
+import { AlertComponent } from './shared/components/alert/alert.component';
 
 @NgModule({
   imports: [
@@ -21,6 +22,7 @@ import { LogoutComponent } from './shared/components/logout/logout.component';
     AppRoutingModule,
   ],
   declarations: [
+    AlertComponent,
     AppComponent,
     AuthLayoutComponent,
     ContentLayoutComponent,
