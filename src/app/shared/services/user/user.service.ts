@@ -31,7 +31,7 @@ export class UserService {
     return this.http.post(this.authURL + 'login/', body, this.httpOptions).pipe(
       map((value: any) => {
         this.user = {
-          ...value.data,
+          ...value.data[0],
         };
         this.message = value.message;
         this.statusCode = value.statusCode;
