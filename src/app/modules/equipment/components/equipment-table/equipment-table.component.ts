@@ -48,7 +48,7 @@ export class EquipmentTableComponent implements OnInit {
   }
 
   private getEquipments() {
-    this.equipmentService.getAll().subscribe((res: any) => {
+    this.equipmentService.getEquipments().subscribe((res: any) => {
       if (res.statusCode === 200) {
         this.dataSource = res.data.map((data: any) => {
           return {
@@ -59,7 +59,6 @@ export class EquipmentTableComponent implements OnInit {
             id: data.id,
           };
         });
-
         console.log(this.dataSource);
       }
     });
