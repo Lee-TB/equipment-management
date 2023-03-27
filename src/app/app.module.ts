@@ -32,7 +32,12 @@ import { AlertComponent } from './shared/components/alert/alert.component';
     SidebarComponent,
     LogoutComponent,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: 'baseURL',
+      useValue: 'http://192.168.40.64:5432/',
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
