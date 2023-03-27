@@ -20,6 +20,7 @@ export class EquipmentPageComponent implements OnInit {
         this.selectedTab = <'table' | 'new'>this.currentPath.split('/')[2];
       }
     });
+    this.selectedTab = <'table' | 'new'>this.currentPath.split('/')[2];
   }
 
   ngOnDestroy() {}

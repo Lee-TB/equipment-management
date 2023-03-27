@@ -13,7 +13,7 @@ type TabType = 'dashboard' | 'equipments' | 'users';
 export class SidebarComponent implements OnInit {
   isLoggedIn: boolean = this.userService.isLoggedIn();
   selectedTab?: TabType;
-  currentPath = '';
+  currentPath = this.location.path();
   constructor(
     private userService: UserService,
     private location: Location,
@@ -27,5 +27,6 @@ export class SidebarComponent implements OnInit {
         this.selectedTab = <TabType>this.currentPath.split('/')[1];
       }
     });
+    this.selectedTab = <TabType>this.currentPath.split('/')[1];
   }
 }
