@@ -7,7 +7,6 @@ import { tap } from 'rxjs';
   providedIn: 'root',
 })
 export class EquipmentService {
-  private endpoint = 'api/equipments/';
   private httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
   };
@@ -19,11 +18,43 @@ export class EquipmentService {
     @Inject('baseURL') private baseURL: string
   ) {}
 
-  getAll() {
-    return this.http.get(this.baseURL + this.endpoint, this.httpOptions).pipe(
-      tap((res: any) => {
-        this.equipments = [res.data];
-      })
-    );
+  getEquipments() {
+    return this.http
+      .get(this.baseURL + `api/equipments/`, this.httpOptions)
+      .pipe(
+        tap((res: any) => {
+          this.equipments = [res.data];
+        })
+      );
+  }
+
+  getAnEquipment(equipmentId: number) {
+    return this.http
+      .get(this.baseURL + `api/equipments/${equipmentId}`, this.httpOptions)
+      .pipe(
+        tap((res: any) => {
+          this.equipments = [res.data];
+        })
+      );
+  }
+
+  getBrands() {
+    return this.http
+      .get(this.baseURL + `api/equipment-brands/`, this.httpOptions)
+      .pipe(
+        tap((value) => {
+          // console.log(value);
+        })
+      );
+  }
+
+  getTypes() {
+    return this.http
+      .get(this.baseURL + `api/device-types/`, this.httpOptions)
+      .pipe(
+        tap((value) => {
+          // console.log(value);
+        })
+      );
   }
 }
