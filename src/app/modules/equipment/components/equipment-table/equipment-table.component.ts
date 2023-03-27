@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Popover } from 'flowbite';
+import { AlertService } from 'src/app/shared/services/alert/alert.service';
 import { EquipmentService } from 'src/app/shared/services/equipment/equipment.service';
 
 @Component({
@@ -41,7 +43,10 @@ export class EquipmentTableComponent implements OnInit {
   ];
   dataSource = [];
 
-  constructor(private equipmentService: EquipmentService) {}
+  constructor(
+    private equipmentService: EquipmentService,
+    private alertService: AlertService
+  ) {}
 
   ngOnInit(): void {
     this.getEquipments();
@@ -60,6 +65,19 @@ export class EquipmentTableComponent implements OnInit {
           };
         });
         console.log(this.dataSource);
+      }
+    });
+  }
+
+  removeEquipment(equipmentId: number) {
+    this.equipmentService.removeAnEquipment(equipmentId).subscribe((res) => {
+      if (res.statusCode >= 200 && res.statusCode < 300) {
+        this.alertService.setType('success');
+        this.alertService.setContent(res.message);
+        this.alertService.setDuration(2000);
+
+        // call request update view
+        this.getEquipments();
       }
     });
   }

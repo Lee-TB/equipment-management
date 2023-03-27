@@ -38,6 +38,16 @@ export class EquipmentService {
       );
   }
 
+  removeAnEquipment(equipmentId: number) {
+    return this.http
+      .delete(this.baseURL + `api/equipments/${equipmentId}`, this.httpOptions)
+      .pipe(
+        tap((res: any) => {
+          this.equipments = [res.data];
+        })
+      );
+  }
+
   getBrands() {
     return this.http
       .get(this.baseURL + `api/equipment-brands/`, this.httpOptions)
