@@ -22,6 +22,10 @@ const routes: Routes = [
         path: 'new',
         component: EquipmentFormComponent,
       },
+      {
+        path: 'edit/:id',
+        component: EquipmentFormComponent,
+      },
     ],
   },
 ];
