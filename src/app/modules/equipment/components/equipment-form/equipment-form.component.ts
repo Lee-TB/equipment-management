@@ -53,6 +53,10 @@ export class EquipmentFormComponent implements OnInit {
         .getAnEquipment(this.equipmentId)
         .subscribe((value) => {
           const equipment = value.data[0];
+
+          // get brands
+          this.getBrands(equipment.equipmentBrandDeviceTypeId);
+
           this.equipmentFormGroup = this.formBuilder.group({
             name: [equipment.name, [Validators.required]],
             equipmentBrandDeviceTypeId: [
