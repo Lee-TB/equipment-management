@@ -70,7 +70,6 @@ export class EquipmentTableComponent implements OnInit {
             desc: data.specifications,
           };
         });
-        console.log(this.dataSource);
       }
     });
   }
