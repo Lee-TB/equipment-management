@@ -1,12 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-
+import { EmployeePageComponent } from './pages/employee-page/employee-page.component';
 
 @NgModule({
-  declarations: [],
-  imports: [
-    CommonModule
-  ]
+  declarations: [EmployeePageComponent],
+  imports: [CommonModule],
 })
-export class EmployeeModule { }
+export class EmployeeModule {}
