@@ -49,7 +49,7 @@
                 *ngIf="index !== 0 && column.dataIndex === 'photo'"
                 class="px-6 py-4"
               >
-                <img [src]="data[column.dataIndex]" alt="" class="w-20" />
+                <img [src]="data[column.dataIndex]" alt="" class="h-20" />
               </td>
             </ng-container>
           </ng-template>
@@ -64,8 +64,13 @@
     <ul class="inline-flex items-center -space-x-px">
       <li>
         <a
-          href="#"
-          class="block px-3 py-2 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+          (click)="prevPage()"
+          class="cursor-pointer block px-3 py-2 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+          [class]="
+            pagingData?.hasPrevious
+              ? 'cursor-pointer '
+              : 'cursor-default opacity-50 hover:bg-white hover:text-gray-500'
+          "
         >
           <span class="sr-only">Previous</span>
           <svg
@@ -83,46 +88,27 @@
           </svg>
         </a>
       </li>
-      <li>
+      <li *ngFor="let page of pages">
         <a
-          href="#"
-          class="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-          >1</a
+          [routerLink]="['../table']"
+          [queryParams]="{ pageNumber: page }"
+          class="px-3 py-2 leading-tight text-gray-500 border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+          [class]="
+            page === pagingData?.['currentPage'] ? 'bg-blue-200' : 'bg-white'
+          "
+          >{{ page }}</a
         >
       </li>
+
       <li>
         <a
-          href="#"
-          class="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-          >2</a
-        >
-      </li>
-      <li>
-        <a
-          href="#"
-          aria-current="page"
-          class="z-10 px-3 py-2 leading-tight text-blue-600 border border-blue-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white"
-          >3</a
-        >
-      </li>
-      <li>
-        <a
-          href="#"
-          class="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-          >4</a
-        >
-      </li>
-      <li>
-        <a
-          href="#"
-          class="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-          >5</a
-        >
-      </li>
-      <li>
-        <a
-          href="#"
+          (click)="nextPage()"
           class="block px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+          [class]="
+            pagingData?.hasNext
+              ? 'cursor-pointer '
+              : 'cursor-default opacity-50 hover:bg-white hover:text-gray-500'
+          "
         >
           <span class="sr-only">Next</span>
           <svg

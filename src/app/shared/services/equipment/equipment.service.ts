@@ -28,6 +28,20 @@ export class EquipmentService {
       );
   }
 
+  getEquipmentsByPaging(pageNumber: number = 1, pageSize: number = 10) {
+    return this.http
+      .get(
+        this.baseURL +
+          `api/equipments/paging?PageNumber=${pageNumber}&PageSize=${pageSize}`,
+        this.httpOptions
+      )
+      .pipe(
+        tap((res: any) => {
+          this.equipments = [res.data];
+        })
+      );
+  }
+
   getAnEquipment(equipmentId: number) {
     return this.http
       .get(this.baseURL + `api/equipments/${equipmentId}`, this.httpOptions)
