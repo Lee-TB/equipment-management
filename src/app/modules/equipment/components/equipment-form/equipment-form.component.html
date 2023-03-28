@@ -19,8 +19,8 @@
         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
       />
       <div
-        class="text-xs text-red-500"
-        *ngIf="equipmentFormGroup && equipmentFormGroup.controls['name'].errors?.['required']"
+        class="text-xs text-red-400"
+        *ngIf="equipmentFormGroup.controls['name'].errors?.['required']"
       >
         required
       </div>
@@ -32,41 +32,18 @@
         >Brand</label
       >
       <select
-        formControlName="equipmentBrandName"
+        formControlName="equipmentBrandId"
         type="brand"
         id="brand"
         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
       >
-        <option *ngFor="let brand of brands" [value]="brand">
-          {{ brand }}
+        <option *ngFor="let brand of brands" [value]="brand['id']">
+          {{ brand["name"] }}
         </option>
       </select>
       <div
-        class="text-xs text-red-500"
-        *ngIf="equipmentFormGroup && equipmentFormGroup.controls['equipmentBrandName'].errors?.['required']"
-      >
-        required
-      </div>
-    </div>
-    <div class="mb-6">
-      <label
-        for="type"
-        class="block text-start mb-2 text-sm font-medium text-gray-900 dark:text-white"
-        >Type</label
-      >
-      <select
-        formControlName="equipmentBrandDeviceTypeName"
-        type="type"
-        id="type"
-        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-      >
-        <option *ngFor="let type of types" [value]="type">
-          {{ type }}
-        </option>
-      </select>
-      <div
-        class="text-xs text-red-500"
-        *ngIf="equipmentFormGroup && equipmentFormGroup.controls['equipmentBrandDeviceTypeName'].errors?.['required']"
+        class="text-xs text-red-400"
+        *ngIf="equipmentFormGroup.controls['equipmentBrandId'].errors?.['required']"
       >
         required
       </div>
@@ -82,7 +59,28 @@
         class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
         id="file_input"
         type="file"
+        (change)="onUpload($event)"
       />
+    </div>
+
+    <div class="mb-6">
+      <label
+        for="specifications"
+        class="block text-start mb-2 text-sm font-medium text-gray-900 dark:text-white"
+        >Specifications</label
+      >
+      <input
+        formControlName="specifications"
+        type="specifications"
+        id="specifications"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+      />
+      <div
+        class="text-xs text-red-400"
+        *ngIf="equipmentFormGroup.controls['specifications'].errors?.['required']"
+      >
+        required
+      </div>
     </div>
   </div>
   <button

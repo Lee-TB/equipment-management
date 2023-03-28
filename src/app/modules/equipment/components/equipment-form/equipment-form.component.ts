@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { AlertService } from 'src/app/shared/services/alert/alert.service';
 import { EquipmentService } from 'src/app/shared/services/equipment/equipment.service';
 
 @Component({
@@ -19,13 +20,14 @@ export class EquipmentFormComponent implements OnInit {
     private router: Router,
     private formBuilder: FormBuilder,
     private equipmentService: EquipmentService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private alertService: AlertService
   ) {
     this.equipmentFormGroup = this.formBuilder.group({
       name: ['', [Validators.required]],
-      equipmentBrandName: ['', [Validators.required]],
-      equipmentBrandDeviceTypeName: ['', [Validators.required]],
-      imageUrl: [''],
+      equipmentBrandId: ['', [Validators.required]],
+      specifications: ['', [Validators.required]],
+      image: [''],
     });
   }
 
@@ -46,17 +48,12 @@ export class EquipmentFormComponent implements OnInit {
       this.equipmentService.getAnEquipment(equipmentId).subscribe((value) => {
         const equipment = value.data[0];
         console.log(equipment);
+        console.log(equipment);
         this.equipmentFormGroup = this.formBuilder.group({
-          name: [equipment.name || '', [Validators.required]],
-          equipmentBrandName: [
-            equipment.equipmentBrandName || '',
-            [Validators.required],
-          ],
-          equipmentBrandDeviceTypeName: [
-            equipment.equipmentBrandDeviceTypeName || '',
-            [Validators.required],
-          ],
-          imageUrl: [''],
+          name: [equipment.name, [Validators.required]],
+          equipmentBrandId: [equipment.equipmentBrandId, [Validators.required]],
+          specifications: [equipment.specifications, [Validators.required]],
+          image: [''],
         });
       });
     }
@@ -65,7 +62,7 @@ export class EquipmentFormComponent implements OnInit {
   getBrands() {
     this.equipmentService.getBrands().subscribe((value: any) => {
       this.brands = value.data.map((row: any) => {
-        return row.name;
+        return row;
       });
     });
   }
@@ -79,9 +76,28 @@ export class EquipmentFormComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.equipmentFormGroup);
     if (this.equipmentFormGroup.valid) {
-      console.log('form valid');
+      const formData = new FormData();
+      for (const [key, value] of Object.entries(
+        this.equipmentFormGroup.value
+      )) {
+        formData.append(key, <string>value);
+      }
+
+      this.equipmentService.addAnEquipment(formData).subscribe((res: any) => {
+        if (res.statusCode >= 200 && res.statusCode < 300) {
+          console.log(res);
+          this.alertService.setType('success');
+          this.alertService.setContent(res.message);
+          this.alertService.setDuration(2000);
+        }
+      });
     }
+  }
+
+  onUpload(event: Event) {
+    this.equipmentFormGroup.patchValue({
+      image: (<HTMLInputElement>event.target).files?.[0],
+    });
   }
 }
