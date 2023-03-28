@@ -115,9 +115,7 @@ export class EquipmentTableComponent implements OnInit {
     this.equipmentService
       .getEquipmentsByPaging(this.pageNumber, this.pageSize)
       .subscribe((res: any) => {
-        console.log('get', res);
         this.pagingData = res.data[0].metaData;
-        console.log(this.pagingData);
         if (this.pagingData) {
           this.pages = arrayFillIncrement(this.pagingData?.totalPages);
         }
