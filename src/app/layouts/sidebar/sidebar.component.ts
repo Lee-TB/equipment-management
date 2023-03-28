@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { UserService } from 'src/app/shared/services/user/user.service';
 
-type TabType = 'dashboard' | 'equipments' | 'users';
+type TabType = 'dashboard' | 'equipments' | 'employees' | 'assignments';
 
 @Component({
   selector: 'app-sidebar',
