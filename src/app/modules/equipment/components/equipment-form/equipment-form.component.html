@@ -1,4 +1,15 @@
-<h2 class="mb-10 text-3xl md:text-4xl">New equipment</h2>
+<h2
+  class="mb-5 text-3xl md:text-4xl"
+  [class]="formType === 'new' ? 'block' : 'hidden'"
+>
+  New equipment
+</h2>
+<h2
+  class="mb-5 text-3xl md:text-4xl"
+  [class]="formType === 'edit' ? 'block' : 'hidden'"
+>
+  Edit equipment
+</h2>
 
 <form
   class="text-start"
@@ -14,7 +25,7 @@
       >
       <input
         formControlName="name"
-        type="name"
+        type="text"
         id="name"
         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
       />
@@ -25,6 +36,31 @@
         required
       </div>
     </div>
+
+    <div class="mb-6">
+      <label
+        for="deviceType"
+        class="block text-start mb-2 text-sm font-medium text-gray-900 dark:text-white"
+        >Device type</label
+      >
+      <select
+        formControlName="equipmentBrandDeviceTypeId"
+        id="deviceType"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        (change)="onSelectDeviceType($event)"
+      >
+        <option *ngFor="let type of types" [value]="type['id']">
+          {{ type["name"] }}
+        </option>
+      </select>
+      <div
+        class="text-xs text-red-400"
+        *ngIf="equipmentFormGroup.controls['equipmentBrandDeviceTypeId'].errors?.['required']"
+      >
+        required
+      </div>
+    </div>
+
     <div class="mb-6">
       <label
         for="brand"
@@ -51,20 +87,6 @@
 
     <div class="mb-6">
       <label
-        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-        for="file_input"
-        >Upload image</label
-      >
-      <input
-        class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-        id="file_input"
-        type="file"
-        (change)="onUpload($event)"
-      />
-    </div>
-
-    <div class="mb-6">
-      <label
         for="specifications"
         class="block text-start mb-2 text-sm font-medium text-gray-900 dark:text-white"
         >Specifications</label
@@ -81,6 +103,20 @@
       >
         required
       </div>
+    </div>
+
+    <div class="mb-6">
+      <label
+        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+        for="file_input"
+        >Upload image</label
+      >
+      <input
+        class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+        id="file_input"
+        type="file"
+        (change)="onUpload($event)"
+      />
     </div>
   </div>
   <button
