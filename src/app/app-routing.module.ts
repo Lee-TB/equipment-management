@@ -19,6 +19,13 @@ const routes: Routes = [
             (m) => m.EquipmentModule
           ),
       },
+      {
+        path: 'employees',
+        loadChildren: () =>
+          import('./modules/employee/employee.module').then(
+            (m) => m.EmployeeModule
+          ),
+      },
     ],
   },
   {
