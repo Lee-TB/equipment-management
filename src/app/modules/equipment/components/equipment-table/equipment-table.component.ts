@@ -71,10 +71,8 @@ export class EquipmentTableComponent implements OnInit {
 
   ngOnInit(): void {
     /*Intilize state */
+    this.getQueryParams();
     this.getEquipments();
-    if (this.pagingData) {
-      this.getQueryParams();
-    }
 
     /*Pagination feature */
     this.paginate();
