@@ -1,5 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { EmployeeService } from 'src/app/shared/services/employee/employee.service';
+import { arrayFillIncrement } from 'src/app/shared/utils/arrayFillIncrement';
 import { formatDate } from 'src/app/shared/utils/formatDate';
 
 @Component({
@@ -52,23 +54,86 @@ export class EmployeeTableComponent implements OnInit {
     },
   ];
   dataSource?: [];
+  pagingData?: {
+    currentPage: number;
+    firstRowOnPage: number;
+    hasNext: boolean;
+    hasPrevious: boolean;
+    pageSize: number;
+    totalItems: number;
+    totalPages: number;
+  };
+  pages: number[] = [];
+  pageNumber: number = 1;
+  pageSize: number = 4;
 
   constructor(
     @Inject('baseURL') private baseURL: string,
-    private employeeService: EmployeeService
+    private employeeService: EmployeeService,
+    private activatedRoute: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
-    this.employeeService.getEmloyeesByPaging().subscribe((res) => {
-      console.log(res.data[0]);
-      this.dataSource = res.data[0].items.map((row: any) => {
-        return {
-          ...row,
-          imageUrl: `${this.baseURL}/${row.imageUrl}`,
-          updatedAt: formatDate(new Date(row.updatedAt)),
-        };
-      });
-      console.log(this.dataSource);
+    /*Intilize state */
+    this.getEmployees();
+    if (this.pagingData) {
+      this.getQueryParams();
+    }
+
+    /*Pagination feature */
+    this.paginate();
+  }
+
+  private paginate() {
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this.pageNumber = Number(
+          this.activatedRoute.snapshot.queryParamMap.get('pageNumber')
+        );
+        this.getEmployees();
+      }
     });
+  }
+
+  private getQueryParams() {
+    this.activatedRoute.queryParams.subscribe((value) => {
+      this.pageNumber = Number(value['pageNumber']);
+    });
+  }
+
+  getEmployees() {
+    this.employeeService
+      .getEmloyeesByPaging(this.pageNumber, this.pageSize)
+      .subscribe((res) => {
+        if (res.statusCode === 200) {
+          this.pagingData = res.data[0].metaData;
+          if (this.pagingData) {
+            this.pages = arrayFillIncrement(this.pagingData?.totalPages);
+          }
+
+          this.dataSource = res.data[0].items.map((row: any) => {
+            return {
+              ...row,
+              imageUrl: `${this.baseURL}/${row.imageUrl}`,
+              updatedAt: formatDate(new Date(row.updatedAt)),
+            };
+          });
+        }
+      });
+  }
+
+  prevPage() {
+    if (this.pagingData?.hasPrevious) {
+      this.pageNumber--;
+      this.getEmployees();
+    }
+  }
+
+  nextPage() {
+    if (this.pagingData?.hasNext) {
+      this.pageNumber++;
+      this.getEmployees();
+    }
   }
 }
