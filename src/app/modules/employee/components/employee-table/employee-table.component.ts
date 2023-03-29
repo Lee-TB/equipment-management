@@ -79,7 +79,6 @@ export class EmployeeTableComponent implements OnInit {
     this.getEmployees();
     if (this.pagingData) {
       this.getQueryParams();
-      console.log(this.pagingData);
     }
 
     /*Pagination feature */
@@ -109,7 +108,6 @@ export class EmployeeTableComponent implements OnInit {
       .subscribe((res) => {
         if (res.statusCode === 200) {
           this.pagingData = res.data[0].metaData;
-          console.log(this.pagingData);
           if (this.pagingData) {
             this.pages = arrayFillIncrement(this.pagingData?.totalPages);
           }
