@@ -84,10 +84,10 @@
       <li>
         <a
           (click)="prevPage()"
-          class="cursor-pointer block px-3 py-2 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+          class="block px-3 py-2 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
           [class]="
             pagingData?.hasPrevious
-              ? 'cursor-pointer '
+              ? 'cursor-pointer'
               : 'cursor-default opacity-50 hover:bg-white hover:text-gray-500'
           "
         >
