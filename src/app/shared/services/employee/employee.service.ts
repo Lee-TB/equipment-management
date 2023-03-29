@@ -24,4 +24,22 @@ export class EmployeeService {
       )
       .pipe(tap((res: any) => {}));
   }
+
+  getRoles() {
+    return this.http
+      .get(this.baseURL + `api/roles`, this.httpOptions)
+      .pipe(tap((res: any) => {}));
+  }
+
+  getDepartments() {
+    return this.http
+      .get(this.baseURL + `api/departments`, this.httpOptions)
+      .pipe(tap((res: any) => {}));
+  }
+
+  addAnEmployee(formData: FormData) {
+    return this.http
+      .post(this.baseURL + `api/auth/register`, formData)
+      .pipe(tap((res: any) => {}));
+  }
 }

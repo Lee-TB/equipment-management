@@ -1,1 +1,213 @@
-<p>employee-form works!</p>
+<h2
+  class="mb-5 text-3xl md:text-4xl"
+  [class]="formType === 'new' ? 'block' : 'hidden'"
+>
+  New employee
+</h2>
+<h2
+  class="mb-5 text-3xl md:text-4xl"
+  [class]="formType === 'edit' ? 'block' : 'hidden'"
+>
+  Edit employee
+</h2>
+
+<form class="text-start" (ngSubmit)="onSubmit()" [formGroup]="formGroup">
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+    <div class="mb-2">
+      <label
+        for="email"
+        class="block text-start mb-2 text-sm font-medium text-gray-900 dark:text-white"
+        >Email</label
+      >
+      <input
+        formControlName="email"
+        type="email"
+        id="email"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+      />
+      <div
+        class="text-xs text-red-400"
+        *ngIf="formGroup.controls['email'].errors?.['required']"
+      >
+        required
+      </div>
+      <div
+        class="text-xs text-red-400"
+        *ngIf="formGroup.controls['email'].errors?.['email']"
+      >
+        invalid email
+      </div>
+    </div>
+    <div class="mb-2">
+      <label
+        for="username"
+        class="block text-start mb-2 text-sm font-medium text-gray-900 dark:text-white"
+        >Username</label
+      >
+      <input
+        formControlName="username"
+        type="text"
+        id="username"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+      />
+      <div
+        class="text-xs text-red-400"
+        *ngIf="formGroup.controls['username'].errors?.['required']"
+      >
+        required
+      </div>
+    </div>
+    <div class="mb-2">
+      <label
+        for="password"
+        class="block text-start mb-2 text-sm font-medium text-gray-900 dark:text-white"
+        >Password</label
+      >
+      <input
+        formControlName="password"
+        type="password"
+        id="password"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+      />
+      <div
+        class="text-xs text-red-400"
+        *ngIf="formGroup.controls['password'].errors?.['required']"
+      >
+        required
+      </div>
+    </div>
+    <div class="mb-2">
+      <label
+        for="confirmPassword"
+        class="block text-start mb-2 text-sm font-medium text-gray-900 dark:text-white"
+        >Confirm password</label
+      >
+      <input
+        formControlName="confirmPassword"
+        type="password"
+        id="confirmPassword"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+      />
+      <div
+        class="text-xs text-red-400"
+        *ngIf="formGroup.controls['confirmPassword'].errors?.['required']"
+      >
+        required
+      </div>
+    </div>
+    <div class="mb-2">
+      <label
+        for="fullName"
+        class="block text-start mb-2 text-sm font-medium text-gray-900 dark:text-white"
+        >Full Name</label
+      >
+      <input
+        formControlName="fullName"
+        type="text"
+        id="fullName"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+      />
+      <div
+        class="text-xs text-red-400"
+        *ngIf="formGroup.controls['fullName'].errors?.['required']"
+      >
+        required
+      </div>
+    </div>
+    <div class="mb-2">
+      <label
+        for="phoneNumber"
+        class="block text-start mb-2 text-sm font-medium text-gray-900 dark:text-white"
+        >Phone Number</label
+      >
+      <input
+        formControlName="phoneNumber"
+        type="number"
+        id="phoneNumber"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+      />
+      <div
+        class="text-xs text-red-400"
+        *ngIf="formGroup.controls['phoneNumber'].errors?.['required']"
+      >
+        required
+      </div>
+    </div>
+
+    <div class="mb-2">
+      <label
+        for="role"
+        class="block text-start mb-2 text-sm font-medium text-gray-900 dark:text-white"
+        >Role</label
+      >
+      <select
+        formControlName="roleId"
+        id="role"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+      >
+        <option *ngFor="let role of roles" [value]="role['id']">
+          {{ role["name"] }}
+        </option>
+      </select>
+      <div
+        class="text-xs text-red-400"
+        *ngIf="formGroup.controls['roleId'].errors?.['required']"
+      >
+        required
+      </div>
+    </div>
+
+    <div class="mb-2">
+      <label
+        for="department"
+        class="block text-start mb-2 text-sm font-medium text-gray-900 dark:text-white"
+        >Department</label
+      >
+      <select
+        formControlName="departmentId"
+        id="department"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+      >
+        <option
+          *ngFor="let department of departments"
+          [value]="department['id']"
+        >
+          {{ department["name"] }}
+        </option>
+      </select>
+      <div
+        class="text-xs text-red-400"
+        *ngIf="formGroup.controls['roleId'].errors?.['required']"
+      >
+        required
+      </div>
+    </div>
+
+    <div class="mb-2">
+      <label
+        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+        for="file_input"
+        >Avatar</label
+      >
+      <input
+        class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+        id="file_input"
+        type="file"
+        (change)="onUpload($event)"
+      />
+      <div
+        class="text-xs text-red-400"
+        *ngIf="formGroup.controls['image'].errors?.['required']"
+      >
+        required
+      </div>
+    </div>
+  </div>
+  <button
+    type="submit"
+    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+  >
+    <span [class]="formType === 'new' ? 'block' : 'hidden'"> Add </span>
+    <span [class]="formType === 'edit' ? 'block' : 'hidden'"> Update </span>
+  </button>
+</form>
