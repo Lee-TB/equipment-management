@@ -1,1 +1,79 @@
-<p>employee-table works!</p>
+<h2 class="mb-10 text-3xl md:text-4xl">Employees Management</h2>
+
+<div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+  <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+    <thead
+      class="text-md font-semibold text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
+    >
+      <tr>
+        <ng-template ngFor let-column [ngForOf]="columns">
+          <th
+            *ngIf="column.dataIndex === 'fullName'"
+            scope="col"
+            class="px-6 py-3 w-96"
+          >
+            {{ column.title }}
+          </th>
+          <th
+            *ngIf="column.dataIndex !== 'fullName'"
+            scope="col"
+            class="px-6 py-3"
+          >
+            {{ column.title }}
+          </th>
+        </ng-template>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngIf="dataSource">
+        <ng-template ngFor let-data [ngForOf]="dataSource">
+          <tr>
+            <ng-template ngFor let-column [ngForOf]="columns" let-index="index">
+              <td *ngIf="column.dataIndex === 'action'" class="px-6 py-4">
+                <div class="flex items-center gap-2">
+                  <a
+                    [routerLink]="['/employees/edit', data['id']]"
+                    class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                    >Edit</a
+                  >
+
+                  <button
+                    class="font-medium text-red-600 dark:text-red-500 hover:underline"
+                  >
+                    <!-- (click)="removeEquipment(data['id'])" -->
+                    Remove
+                  </button>
+                </div>
+              </td>
+              <ng-container *ngIf="column.dataIndex !== 'action'">
+                <th
+                  *ngIf="index === 0"
+                  scope="row"
+                  class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                >
+                  {{ data[column.dataIndex] }}
+                </th>
+                <td
+                  *ngIf="index !== 0 && column.dataIndex !== 'imageUrl'"
+                  class="px-6 py-4"
+                >
+                  {{ data[column.dataIndex] }}
+                </td>
+                <td
+                  *ngIf="index !== 0 && column.dataIndex === 'imageUrl'"
+                  class="px-6 py-4"
+                >
+                  <img
+                    [src]="data[column.dataIndex]"
+                    [alt]="data[column.dataIndex]"
+                    class="h-20"
+                  />
+                </td>
+              </ng-container>
+            </ng-template>
+          </tr>
+        </ng-template>
+      </ng-container>
+    </tbody>
+  </table>
+</div>
