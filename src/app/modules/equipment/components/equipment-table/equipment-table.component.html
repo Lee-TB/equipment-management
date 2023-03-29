@@ -21,8 +21,14 @@
       </tr>
     </thead>
     <tbody>
-      <ng-template ngFor let-data [ngForOf]="dataSource">
-        <tr>
+      <ng-template ngFor let-data [ngForOf]="dataSource" let-index="index">
+        <tr
+          [class]="
+            index % 2 === 0
+              ? 'bg-white border-b dark:bg-gray-900 dark:border-gray-700'
+              : 'border-b bg-gray-50 dark:bg-gray-800 dark:border-gray-700'
+          "
+        >
           <ng-template ngFor let-column [ngForOf]="columns" let-index="index">
             <td *ngIf="column.dataIndex === 'action'" class="px-6 py-4">
               <div class="flex items-center gap-2">
