@@ -115,11 +115,12 @@ export class EquipmentTableComponent implements OnInit {
     this.equipmentService
       .getEquipmentsByPaging(this.pageNumber, this.pageSize)
       .subscribe((res: any) => {
-        this.pagingData = res.data[0].metaData;
-        if (this.pagingData) {
-          this.pages = arrayFillIncrement(this.pagingData?.totalPages);
-        }
         if (res.statusCode === 200) {
+          this.pagingData = res.data[0].metaData;
+          if (this.pagingData) {
+            this.pages = arrayFillIncrement(this.pagingData?.totalPages);
+          }
+
           this.dataSource = res.data[0].items.map((data: any) => {
             return {
               name: data.name,
