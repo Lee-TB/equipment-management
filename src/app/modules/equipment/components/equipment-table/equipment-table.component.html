@@ -33,6 +33,12 @@
             <td *ngIf="column.dataIndex === 'action'" class="px-6 py-4">
               <div class="flex items-center gap-2">
                 <a
+                  [routerLink]="['/equipments/concrete', data['id']]"
+                  class="font-medium text-green-800 dark:text-blue-500 hover:underline"
+                  >Concrete</a
+                >
+
+                <a
                   [routerLink]="['/equipments/edit', data['id']]"
                   class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
                   >Edit</a
