@@ -64,7 +64,11 @@
                 *ngIf="index !== 0 && column.dataIndex === 'photo'"
                 class="px-6 py-4"
               >
-                <img [src]="data[column.dataIndex]" alt="" class="h-20" />
+                <img
+                  [src]="data[column.dataIndex]"
+                  [alt]="data[column.dataIndex]"
+                  class="h-20 border"
+                />
               </td>
             </ng-container>
           </ng-template>
