@@ -46,6 +46,7 @@ export class EquipmentFormComponent implements OnInit {
     });
     this.formType = <'new' | 'edit'>this.currentPath.split('/')[2];
 
+    /*fill data before when edit */
     if (this.formType === 'edit') {
       const routeParams = this.route.snapshot.paramMap;
       this.equipmentId = Number(routeParams.get('id'));
