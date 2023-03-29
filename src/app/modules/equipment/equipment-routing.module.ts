@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { EquipmentPageComponent } from './pages/equipment-page/equipment-page.component';
 import { EquipmentTableComponent } from './components/equipment-table/equipment-table.component';
 import { EquipmentFormComponent } from './components/equipment-form/equipment-form.component';
+import { EquipmentConcreteComponent } from './components/equipment-concrete/equipment-concrete.component';
 
 const routes: Routes = [
   {
@@ -25,6 +26,10 @@ const routes: Routes = [
       {
         path: 'edit/:id',
         component: EquipmentFormComponent,
+      },
+      {
+        path: 'concrete/:id',
+        component: EquipmentConcreteComponent,
       },
     ],
   },
