@@ -78,10 +78,8 @@ export class EmployeeTableComponent implements OnInit {
 
   ngOnInit(): void {
     /*Intilize state */
+    this.getQueryParams();
     this.getEmployees();
-    if (this.pagingData) {
-      this.getQueryParams();
-    }
 
     /*Pagination feature */
     this.paginate();
@@ -114,7 +112,10 @@ export class EmployeeTableComponent implements OnInit {
 
   private getQueryParams() {
     this.activatedRoute.queryParams.subscribe((value) => {
-      this.pageNumber = Number(value['pageNumber']);
+      const pageNumber = Number(value['pageNumber']);
+      if (pageNumber) {
+        this.pageNumber = pageNumber;
+      }
     });
   }
 

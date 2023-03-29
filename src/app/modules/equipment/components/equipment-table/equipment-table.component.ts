@@ -105,7 +105,10 @@ export class EquipmentTableComponent implements OnInit {
 
   private getQueryParams() {
     this.activatedRoute.queryParams.subscribe((value) => {
-      this.pageNumber = Number(value['pageNumber']);
+      const pageNumber = Number(value['pageNumber']);
+      if (pageNumber) {
+        this.pageNumber = pageNumber;
+      }
     });
   }
 
