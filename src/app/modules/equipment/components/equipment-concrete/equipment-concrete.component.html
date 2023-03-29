@@ -1,1 +1,34 @@
-<p>equipment-concrete works!</p>
+<div *ngIf="equipment" id="equipment-model">
+  <h2 class="mb-10 text-3xl md:text-4xl">
+    {{ equipment.name }}
+  </h2>
+  <div class="flex gap-4">
+    <img
+      [src]="baseURL + equipment.imageUrl"
+      [alt]="equipment.name"
+      class="w-96 border rounded"
+    />
+    <div class="flex flex-col justify-center">
+      <div>
+        <strong>Type: </strong
+        ><span>{{ equipment.equipmentBrandDeviceTypeName }}</span>
+      </div>
+      <div>
+        <strong>Brand: </strong><span>{{ equipment.equipmentBrandName }}</span>
+      </div>
+      <div>
+        <strong>Create at: </strong><span>{{ equipment.createdAt }}</span>
+      </div>
+      <div>
+        <strong>Update at: </strong><span>{{ equipment.updatedAt }}</span>
+      </div>
+      <div>
+        <p>
+          {{ equipment.specifications }}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="equipment-concrete-table"></div>
