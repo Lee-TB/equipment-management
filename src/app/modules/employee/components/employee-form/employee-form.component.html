@@ -11,7 +11,12 @@
   Edit employee
 </h2>
 
-<form class="text-start" (ngSubmit)="onSubmit()" [formGroup]="formGroup">
+<form
+  *ngIf="formGroup"
+  class="text-start"
+  (ngSubmit)="onSubmit()"
+  [formGroup]="formGroup"
+>
   <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
     <div class="mb-2">
       <label
@@ -38,7 +43,7 @@
         invalid email
       </div>
     </div>
-    <div class="mb-2">
+    <div class="mb-2" *ngIf="formType !== 'edit'">
       <label
         for="username"
         class="block text-start mb-2 text-sm font-medium text-gray-900 dark:text-white"
@@ -57,7 +62,7 @@
         required
       </div>
     </div>
-    <div class="mb-2">
+    <div class="mb-2" *ngIf="formType !== 'edit'">
       <label
         for="password"
         class="block text-start mb-2 text-sm font-medium text-gray-900 dark:text-white"
@@ -76,7 +81,7 @@
         required
       </div>
     </div>
-    <div class="mb-2">
+    <div class="mb-2" *ngIf="formType !== 'edit'">
       <label
         for="confirmPassword"
         class="block text-start mb-2 text-sm font-medium text-gray-900 dark:text-white"
@@ -134,7 +139,7 @@
       </div>
     </div>
 
-    <div class="mb-2">
+    <div class="mb-2" *ngIf="formType !== 'edit'">
       <label
         for="role"
         class="block text-start mb-2 text-sm font-medium text-gray-900 dark:text-white"
@@ -157,7 +162,7 @@
       </div>
     </div>
 
-    <div class="mb-2">
+    <div class="mb-2" *ngIf="formType !== 'edit'">
       <label
         for="department"
         class="block text-start mb-2 text-sm font-medium text-gray-900 dark:text-white"

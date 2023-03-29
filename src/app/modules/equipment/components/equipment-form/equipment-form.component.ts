@@ -23,7 +23,7 @@ export class EquipmentFormComponent implements OnInit {
     private location: Location,
     private formBuilder: FormBuilder,
     private equipmentService: EquipmentService,
-    private route: ActivatedRoute,
+    private activatedRoute: ActivatedRoute,
     private alertService: AlertService
   ) {
     this.equipmentFormGroup = this.formBuilder.group({
@@ -48,7 +48,7 @@ export class EquipmentFormComponent implements OnInit {
 
     /*fill data before when edit */
     if (this.formType === 'edit') {
-      const routeParams = this.route.snapshot.paramMap;
+      const routeParams = this.activatedRoute.snapshot.paramMap;
       this.equipmentId = Number(routeParams.get('id'));
       this.equipmentService
         .getAnEquipment(this.equipmentId)

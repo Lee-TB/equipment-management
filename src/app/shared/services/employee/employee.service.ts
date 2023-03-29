@@ -42,4 +42,16 @@ export class EmployeeService {
       .post(this.baseURL + `api/auth/register`, formData)
       .pipe(tap((res: any) => {}));
   }
+
+  updateAnEmployee(employeeId: number, formData: FormData) {
+    return this.http
+      .put(this.baseURL + `api/users/${employeeId}`, formData)
+      .pipe(tap((res: any) => {}));
+  }
+
+  getAnEmployee(employeeId: number) {
+    return this.http
+      .get(this.baseURL + `api/users/${employeeId}`)
+      .pipe(tap((res: any) => {}));
+  }
 }
