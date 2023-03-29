@@ -31,4 +31,102 @@
   </div>
 </div>
 
-<div id="equipment-concrete-table"></div>
+<div id="new-equipment-concrete" class="mt-4">
+  <div class="mb-6 mr-2 inline-block">
+    <label
+      for="price"
+      class="block mb-2 text-sm font-medium text-gray-900 dark:text-white sr-only"
+      >Price</label
+    >
+    <input
+      [(ngModel)]="price"
+      type="number"
+      id="price"
+      max="1000000000"
+      min="1000"
+      placeholder="price"
+      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+    />
+  </div>
+  <button
+    (click)="addConcrete()"
+    type="button"
+    class="col-span-2 text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+  >
+    Add concrete
+  </button>
+</div>
+
+<div *ngIf="concreteEquipments" id="equipment-concrete-table" class="mt-6">
+  <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+      <thead
+        class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
+      >
+        <tr>
+          <th scope="col" class="px-6 py-3">ID</th>
+          <th scope="col" class="px-6 py-3">Price</th>
+          <th scope="col" class="px-6 py-3">Status</th>
+          <th scope="col" class="px-6 py-3">Create at</th>
+          <th scope="col" class="px-6 py-3">Update at</th>
+          <th scope="col" class="px-6 py-3">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-template
+          ngFor
+          let-concrete
+          [ngForOf]="concreteEquipments"
+          let-index="index"
+        >
+          <tr
+            [class]="
+              index % 2 === 0
+                ? 'bg-white border-b dark:bg-gray-900 dark:border-gray-700'
+                : 'border-b bg-gray-50 dark:bg-gray-800 dark:border-gray-700'
+            "
+          >
+            <td class="px-6 py-4">
+              {{ concrete["id"] }}
+            </td>
+            <td class="px-6 py-4">
+              {{ concrete["price"] | currency }}
+            </td>
+            <td class="px-6 py-4">
+              <span
+                *ngIf="
+                  concrete['statusOfConcreteEquipmentName'] === 'Available'
+                "
+                class="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-green-400 border border-green-400"
+              >
+                {{ concrete["statusOfConcreteEquipmentName"] }}
+              </span>
+              <span
+                *ngIf="concrete['statusOfConcreteEquipmentName'] === 'Borrowed'"
+                class="bg-yellow-100 text-yellow-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-yellow-300 border border-yellow-300"
+              >
+                {{ concrete["statusOfConcreteEquipmentName"] }}
+              </span>
+            </td>
+            <td class="px-6 py-4">
+              {{ concrete["createdAt"] }}
+            </td>
+            <td class="px-6 py-4">
+              {{ concrete["updatedAt"] }}
+            </td>
+            <td class="px-6 py-4">
+              <button
+                class="font-medium text-red-600 dark:text-red-500 hover:underline"
+              >
+                Remove
+              </button>
+            </td>
+          </tr>
+          <!-- <tr class="border-b bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
+          
+        </tr> -->
+        </ng-template>
+      </tbody>
+    </table>
+  </div>
+</div>

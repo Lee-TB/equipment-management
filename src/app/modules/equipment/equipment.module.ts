@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { EquipmentRoutingModule } from './equipment-routing.module';
 import { EquipmentTableComponent } from './components/equipment-table/equipment-table.component';
@@ -9,7 +9,12 @@ import { EquipmentFormComponent } from './components/equipment-form/equipment-fo
 import { EquipmentConcreteComponent } from './components/equipment-concrete/equipment-concrete.component';
 
 @NgModule({
-  imports: [CommonModule, ReactiveFormsModule, EquipmentRoutingModule],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    FormsModule,
+    EquipmentRoutingModule,
+  ],
   declarations: [
     EquipmentPageComponent,
     EquipmentTableComponent,
