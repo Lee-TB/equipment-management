@@ -1,5 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { AlertService } from 'src/app/shared/services/alert/alert.service';
 import { EmployeeService } from 'src/app/shared/services/employee/employee.service';
 import { arrayFillIncrement } from 'src/app/shared/utils/arrayFillIncrement';
 import { formatDate } from 'src/app/shared/utils/formatDate';
@@ -71,7 +72,8 @@ export class EmployeeTableComponent implements OnInit {
     @Inject('baseURL') private baseURL: string,
     private employeeService: EmployeeService,
     private activatedRoute: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private alertService: AlertService
   ) {}
 
   ngOnInit(): void {
@@ -94,6 +96,20 @@ export class EmployeeTableComponent implements OnInit {
         this.getEmployees();
       }
     });
+  }
+
+  prevPage() {
+    if (this.pagingData?.hasPrevious) {
+      this.pageNumber--;
+      this.getEmployees();
+    }
+  }
+
+  nextPage() {
+    if (this.pagingData?.hasNext) {
+      this.pageNumber++;
+      this.getEmployees();
+    }
   }
 
   private getQueryParams() {
@@ -123,17 +139,15 @@ export class EmployeeTableComponent implements OnInit {
       });
   }
 
-  prevPage() {
-    if (this.pagingData?.hasPrevious) {
-      this.pageNumber--;
-      this.getEmployees();
-    }
-  }
+  removeEmployee(employeeId: number) {
+    this.employeeService.removeAnEmployee(employeeId).subscribe((res) => {
+      if (res.statusCode >= 200 && res.statusCode < 300) {
+        this.alertService.setType('success');
+        this.alertService.setContent(res.message);
+        this.alertService.setDuration(2000);
 
-  nextPage() {
-    if (this.pagingData?.hasNext) {
-      this.pageNumber++;
-      this.getEmployees();
-    }
+        this.getEmployees();
+      }
+    });
   }
 }

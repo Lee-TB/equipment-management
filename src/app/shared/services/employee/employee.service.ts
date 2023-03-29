@@ -54,4 +54,10 @@ export class EmployeeService {
       .get(this.baseURL + `api/users/${employeeId}`)
       .pipe(tap((res: any) => {}));
   }
+
+  removeAnEmployee(employeeId: number) {
+    return this.http
+      .delete(this.baseURL + `api/users/${employeeId}`, this.httpOptions)
+      .pipe(tap((res: any) => {}));
+  }
 }
