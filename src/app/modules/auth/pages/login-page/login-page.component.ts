@@ -15,9 +15,9 @@ export class LoginPageComponent {
     username: ['', Validators.required],
     password: ['', Validators.required],
   });
-
   loading = false;
   hidePassword = true;
+
   constructor(
     private formBuilder: FormBuilder,
     private userService: UserService,
