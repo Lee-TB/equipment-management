@@ -4,6 +4,7 @@ import { EmployeePageComponent } from './pages/employee-page/employee-page.compo
 import { EmployeeTableComponent } from './components/employee-table/employee-table.component';
 import { EmployeeFormComponent } from './components/employee-form/employee-form.component';
 import { AssignmentComponent } from './components/assignment/assignment.component';
+import { EquipmentConcreteComponent } from '../equipment/components/equipment-concrete/equipment-concrete.component';
 
 const routes: Routes = [
   {
@@ -29,7 +30,16 @@ const routes: Routes = [
       },
       {
         path: 'assign/:id',
+        redirectTo: 'assign/:id/table',
+        pathMatch: 'full',
+      },
+      {
+        path: 'assign/:id/table',
         component: AssignmentComponent,
+      },
+      {
+        path: 'assign/:employeeId/concrete/:equipmentId',
+        component: EquipmentConcreteComponent,
       },
     ],
   },
