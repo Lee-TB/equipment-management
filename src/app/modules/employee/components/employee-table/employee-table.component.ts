@@ -141,14 +141,16 @@ export class EmployeeTableComponent implements OnInit {
   }
 
   removeEmployee(employeeId: number) {
-    this.employeeService.removeAnEmployee(employeeId).subscribe((res) => {
-      if (res.statusCode >= 200 && res.statusCode < 300) {
-        this.alertService.setType('success');
-        this.alertService.setContent(res.message);
-        this.alertService.setDuration(2000);
+    if (window.confirm('Are you sure?')) {
+      this.employeeService.removeAnEmployee(employeeId).subscribe((res) => {
+        if (res.statusCode >= 200 && res.statusCode < 300) {
+          this.alertService.setType('success');
+          this.alertService.setContent(res.message);
+          this.alertService.setDuration(2000);
 
-        this.getEmployees();
-      }
-    });
+          this.getEmployees();
+        }
+      });
+    }
   }
 }
