@@ -58,8 +58,11 @@
 </ul>
 
 <!-- Title -->
-<h2 class="mb-10 text-3xl md:text-4xl">
-  <span *ngIf="selectedTab === 'table'">Equipments Management</span>
+<h2
+  *ngIf="selectedTab === 'table'"
+  class="mb-10 font-medium text-3xl md:text-4xl"
+>
+  <span>Equipments Management</span>
 </h2>
 
 <router-outlet></router-outlet>
