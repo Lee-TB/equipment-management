@@ -1,1 +1,72 @@
-<app-equipment-table></app-equipment-table>
+<h3 class="mb-5 font-medium text-xl md:text-2xl">Employee information</h3>
+<div *ngIf="employee">
+  <div class="flex gap-4 mb-6">
+    <figure class="w-20">
+      <img [src]="employee['imageUrl']" alt="Avatar" class="w-full" />
+    </figure>
+    <div class="flex flex-col justify-center">
+      <div>
+        <strong>Full name: </strong>
+        <i>{{ employee["fullName"] }}</i>
+      </div>
+      <div>
+        <strong>Email: </strong>
+        <i>{{ employee["email"] }}</i>
+      </div>
+      <div>
+        <strong>Phone: </strong>
+        <i>{{ employee["phoneNumber"] }}</i>
+      </div>
+      <div>
+        <strong>Role: </strong>
+        <i>{{ employee["roleName"].join() }}</i>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h3 class="mb-5 font-medium text-xl md:text-2xl">Borrowing equipment table</h3>
+<div *ngIf="borrowings" class="relative overflow-x-auto">
+  <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+    <thead
+      class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
+    >
+      <tr>
+        <th scope="col" class="px-6 py-3">ID</th>
+        <th scope="col" class="px-6 py-3">Name</th>
+        <th scope="col" class="px-6 py-3">Type</th>
+        <th scope="col" class="px-6 py-3">Brand</th>
+        <th scope="col" class="px-6 py-3">Price</th>
+        <th scope="col" class="px-6 py-3">Return Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        *ngFor="let borrowing of borrowings; index as i"
+        [class]="
+          i % 2 === 0
+            ? 'bg-white border-b dark:bg-gray-900 dark:border-gray-700'
+            : 'border-b bg-gray-50 dark:bg-gray-800 dark:border-gray-700'
+        "
+      >
+        <th
+          scope="row"
+          class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+        >
+          {{ borrowing["id"] }}
+        </th>
+        <td class="px-6 py-4">{{ borrowing["equipmentName"] }}</td>
+        <td class="px-6 py-4">{{ borrowing["deviceTypeName"] }}</td>
+        <td class="px-6 py-4">{{ borrowing["equipmentBrandName"] }}</td>
+        <td class="px-6 py-4">
+          {{ borrowing["concreteEquipmentPrice"] | currency }}
+        </td>
+        <td class="px-6 py-4">{{ borrowing["returnDate"] }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<h3 class="my-5 font-medium text-xl md:text-2xl">Equipments table</h3>
+
+<app-equipment-table [isTableToAssign]="true"></app-equipment-table>

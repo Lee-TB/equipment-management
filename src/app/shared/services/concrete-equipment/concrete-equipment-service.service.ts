@@ -14,7 +14,7 @@ export class ConcreteEquipmentServiceService {
     @Inject('baseURL') private baseURL: string
   ) {}
 
-  getConcreteEquipmentByEquipmentId(equipmentId: number) {
+  getConcreteEquipmentsByEquipmentId(equipmentId: number) {
     return this.http.get(
       this.baseURL + `api/concrete-equipments/equipments/${equipmentId}`
     );
