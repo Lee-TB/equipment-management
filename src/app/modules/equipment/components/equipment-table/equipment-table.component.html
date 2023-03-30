@@ -29,7 +29,7 @@
         >
           <ng-template ngFor let-column [ngForOf]="columns" let-index="index">
             <td *ngIf="column.dataIndex === 'action'" class="px-6 py-4">
-              <div class="flex items-center gap-2">
+              <div *ngIf="!isTableToAssign" class="flex items-center gap-2">
                 <a
                   [routerLink]="['/equipments/concrete', data['id']]"
                   class="font-medium text-green-800 dark:text-blue-500 hover:underline"
@@ -48,6 +48,14 @@
                 >
                   Remove
                 </button>
+              </div>
+
+              <div *ngIf="isTableToAssign" class="flex items-center gap-2">
+                <a
+                  [routerLink]="['../concrete', data['id']]"
+                  class="font-medium text-green-800 dark:text-blue-500 hover:underline"
+                  >Concrete equipments</a
+                >
               </div>
             </td>
             <ng-container *ngIf="column.dataIndex !== 'action'">

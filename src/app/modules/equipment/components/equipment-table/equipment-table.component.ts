@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { AlertService } from 'src/app/shared/services/alert/alert.service';
 import { EquipmentService } from 'src/app/shared/services/equipment/equipment.service';
@@ -10,6 +10,8 @@ import { arrayFillIncrement } from 'src/app/shared/utils/arrayFillIncrement';
   styleUrls: ['./equipment-table.component.css'],
 })
 export class EquipmentTableComponent implements OnInit {
+  @Input() isTableToAssign: boolean = false;
+
   columns = [
     {
       title: 'Id',
