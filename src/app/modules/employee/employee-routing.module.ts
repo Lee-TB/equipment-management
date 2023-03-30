@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { EmployeePageComponent } from './pages/employee-page/employee-page.component';
 import { EmployeeTableComponent } from './components/employee-table/employee-table.component';
 import { EmployeeFormComponent } from './components/employee-form/employee-form.component';
+import { AssignmentComponent } from './components/assignment/assignment.component';
 
 const routes: Routes = [
   {
@@ -25,6 +26,10 @@ const routes: Routes = [
       {
         path: 'edit/:id',
         component: EmployeeFormComponent,
+      },
+      {
+        path: 'assign/:id',
+        component: AssignmentComponent,
       },
     ],
   },
