@@ -27,7 +27,7 @@ export class EquipmentConcreteComponent implements OnInit {
 
   ngOnInit(): void {
     const routeParams = this.activatedRoute.snapshot.paramMap;
-    this.equipmentId = Number(routeParams.get('id'));
+    this.equipmentId = Number(routeParams.get('equipmentId'));
 
     if (this.equipmentId) {
       this.getAnEquipment();

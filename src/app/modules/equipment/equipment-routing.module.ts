@@ -28,7 +28,7 @@ const routes: Routes = [
         component: EquipmentFormComponent,
       },
       {
-        path: 'concrete/:id',
+        path: 'concrete/:equipmentId',
         component: EquipmentConcreteComponent,
       },
     ],
