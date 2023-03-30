@@ -25,8 +25,16 @@
   </div>
 </div>
 
-<h3 class="mb-5 font-medium text-xl md:text-2xl">Borrowing equipment table</h3>
-<div *ngIf="borrowings" class="relative overflow-x-auto">
+<h3
+  *ngIf="borrowings && borrowings.length > 0"
+  class="mb-5 font-medium text-xl md:text-2xl"
+>
+  Borrowing equipment table
+</h3>
+<div
+  *ngIf="borrowings && borrowings.length > 0"
+  class="relative overflow-x-auto"
+>
   <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
     <thead
       class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
