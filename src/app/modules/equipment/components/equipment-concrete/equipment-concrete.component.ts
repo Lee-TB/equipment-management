@@ -52,11 +52,7 @@ export class EquipmentConcreteComponent implements OnInit {
       this.concreteEquipmentService
         .getConcreteEquipmentByEquipmentId(this.equipmentId)
         .subscribe((res: any) => {
-          if (
-            res.statusCode >= 200 &&
-            res.statusCode < 300 &&
-            res.data.length > 0
-          ) {
+          if (res.statusCode >= 200 && res.statusCode < 300) {
             this.concreteEquipments = res.data.map((item: any) => {
               return {
                 ...item,
@@ -82,6 +78,21 @@ export class EquipmentConcreteComponent implements OnInit {
 
       this.concreteEquipmentService
         .addAnConcreteEquipment(data)
+        .subscribe((res: any) => {
+          if (res.statusCode >= 200 && res.statusCode < 300) {
+            this.alertService.setType('success');
+            this.alertService.setContent(res.message);
+            this.alertService.setDuration(3000);
+            this.getConcreteEquipment();
+          }
+        });
+    }
+  }
+
+  removeConcreteEquipment(concreteId: number) {
+    if (window.confirm('Are you sure!')) {
+      this.concreteEquipmentService
+        .removeAnConcreteEquipment(concreteId)
         .subscribe((res: any) => {
           if (res.statusCode >= 200 && res.statusCode < 300) {
             this.alertService.setType('success');

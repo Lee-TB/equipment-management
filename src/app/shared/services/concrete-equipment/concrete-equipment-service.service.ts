@@ -23,4 +23,11 @@ export class ConcreteEquipmentServiceService {
   addAnConcreteEquipment(data: any) {
     return this.http.post(this.baseURL + `api/concrete-equipments`, data);
   }
+
+  removeAnConcreteEquipment(concreteId: number) {
+    return this.http.delete(
+      this.baseURL + `api/concrete-equipments/${concreteId}`,
+      this.httpOptions
+    );
+  }
 }
