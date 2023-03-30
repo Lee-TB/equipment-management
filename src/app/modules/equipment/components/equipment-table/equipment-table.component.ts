@@ -116,7 +116,7 @@ export class EquipmentTableComponent implements OnInit {
     this.equipmentService
       .getEquipmentsByPaging(this.pageNumber, this.pageSize)
       .subscribe((res: any) => {
-        if (res.statusCode === 200) {
+        if (res.statusCode >= 200 && res.statusCode < 300) {
           this.pagingData = res.data[0].metaData;
           if (this.pagingData) {
             this.pages = arrayFillIncrement(this.pagingData?.totalPages);
@@ -137,15 +137,17 @@ export class EquipmentTableComponent implements OnInit {
   }
 
   removeEquipment(equipmentId: number) {
-    this.equipmentService.removeAnEquipment(equipmentId).subscribe((res) => {
-      if (res.statusCode >= 200 && res.statusCode < 300) {
-        this.alertService.setType('success');
-        this.alertService.setContent(res.message);
-        this.alertService.setDuration(2000);
+    if (window.confirm('Are your sure?')) {
+      this.equipmentService.removeAnEquipment(equipmentId).subscribe((res) => {
+        if (res.statusCode >= 200 && res.statusCode < 300) {
+          this.alertService.setType('success');
+          this.alertService.setContent(res.message);
+          this.alertService.setDuration(2000);
 
-        // call request update view
-        this.getEquipments();
-      }
-    });
+          // call request update view
+          this.getEquipments();
+        }
+      });
+    }
   }
 }

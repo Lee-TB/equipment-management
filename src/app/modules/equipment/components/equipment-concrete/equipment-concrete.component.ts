@@ -90,7 +90,7 @@ export class EquipmentConcreteComponent implements OnInit {
   }
 
   removeConcreteEquipment(concreteId: number) {
-    if (window.confirm('Are you sure!')) {
+    if (window.confirm('Are you sure?')) {
       this.concreteEquipmentService
         .removeAnConcreteEquipment(concreteId)
         .subscribe((res: any) => {
