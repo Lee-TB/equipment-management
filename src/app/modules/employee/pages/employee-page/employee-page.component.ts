@@ -8,7 +8,7 @@ import { NavigationEnd, Router } from '@angular/router';
   styleUrls: ['./employee-page.component.css'],
 })
 export class EmployeePageComponent {
-  selectedTab: 'table' | 'new' = 'table';
+  selectedTab: 'table' | 'new' | 'assign' = 'table';
   currentPath = this.location.path();
 
   constructor(private location: Location, private router: Router) {}
@@ -17,10 +17,14 @@ export class EmployeePageComponent {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         this.currentPath = event.urlAfterRedirects;
-        this.selectedTab = <'table' | 'new'>this.currentPath.split('/')[2];
+        this.selectedTab = <'table' | 'new' | 'assign'>(
+          this.currentPath.split('/')[2]
+        );
       }
     });
-    this.selectedTab = <'table' | 'new'>this.currentPath.split('/')[2];
+    this.selectedTab = <'table' | 'new' | 'assign'>(
+      this.currentPath.split('/')[2]
+    );
   }
 
   ngOnDestroy() {}

@@ -1,4 +1,4 @@
-<!-- tabs -->
+<!-- Tabs -->
 <ul class="flex gap-2 items-center mb-5">
   <li>
     <a
@@ -56,5 +56,11 @@
     </a>
   </li>
 </ul>
+
+<!-- Title -->
+<h2 class="mb-10 text-3xl md:text-4xl">
+  <span *ngIf="selectedTab === 'table'">Employees Management</span>
+  <span *ngIf="selectedTab === 'assign'">Employee Assignment</span>
+</h2>
 
 <router-outlet></router-outlet>
