@@ -44,6 +44,11 @@ export class EmployeeTableComponent implements OnInit {
       key: 'departmentName',
     },
     {
+      title: 'Role',
+      dataIndex: 'roleName',
+      key: 'roleName',
+    },
+    {
       title: 'Date modified',
       dataIndex: 'updatedAt',
       key: 'updatedAt',
