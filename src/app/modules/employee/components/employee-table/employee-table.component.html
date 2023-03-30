@@ -73,11 +73,13 @@
                   *ngIf="index !== 0 && column.dataIndex === 'imageUrl'"
                   class="px-6 py-4"
                 >
-                  <img
-                    [src]="data[column.dataIndex]"
-                    [alt]="data[column.dataIndex]"
-                    class="h-20 border"
-                  />
+                  <figure class="w-20 aspect-square">
+                    <img
+                      [src]="data[column.dataIndex]"
+                      [alt]="data[column.dataIndex]"
+                      class="w-full object-cover"
+                    />
+                  </figure>
                 </td>
               </ng-container>
             </ng-template>

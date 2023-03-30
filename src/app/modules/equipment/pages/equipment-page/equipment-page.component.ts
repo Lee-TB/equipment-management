@@ -8,7 +8,7 @@ import { NavigationEnd, Router } from '@angular/router';
   styleUrls: ['./equipment-page.component.css'],
 })
 export class EquipmentPageComponent implements OnInit {
-  selectedTab: 'table' | 'new' = 'table';
+  selectedTab?: 'table' | 'new';
   currentPath = this.location.path();
 
   constructor(private location: Location, private router: Router) {}
