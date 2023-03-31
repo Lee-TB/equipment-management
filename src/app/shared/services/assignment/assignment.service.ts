@@ -28,4 +28,11 @@ export class AssignmentService {
       this.httpOptions
     );
   }
+
+  revokeAConcreteEquipment(borrowId: number) {
+    return this.http.put(
+      this.baseURL + `api/borrowings/return/${borrowId}`,
+      this.httpOptions
+    );
+  }
 }
