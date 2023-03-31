@@ -59,13 +59,13 @@
 
 <!-- Title -->
 <h2
-  *ngIf="selectedTab === 'table'"
+  *ngIf="selectedTab?.includes('table')"
   class="mb-10 font-medium text-3xl md:text-4xl"
 >
   Employees Management
 </h2>
 <h2
-  *ngIf="selectedTab === 'assign'"
+  *ngIf="selectedTab?.includes('assign')"
   class="mb-10 font-medium text-3xl md:text-4xl"
 >
   Employee Assignment

@@ -59,7 +59,7 @@
 
 <!-- Title -->
 <h2
-  *ngIf="selectedTab === 'table'"
+  *ngIf="selectedTab?.includes('table')"
   class="mb-10 font-medium text-3xl md:text-4xl"
 >
   <span>Equipments Management</span>
