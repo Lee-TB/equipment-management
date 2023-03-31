@@ -9,6 +9,11 @@ import { LogoutComponent } from './shared/components/logout/logout.component';
 const routes: Routes = [
   {
     path: '',
+    redirectTo: 'equipments',
+    pathMatch: 'full',
+  },
+  {
+    path: '',
     component: ContentLayoutComponent,
     canActivate: [AuthGuard],
     children: [
