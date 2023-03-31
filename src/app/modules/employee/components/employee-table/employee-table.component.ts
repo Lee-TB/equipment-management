@@ -103,16 +103,16 @@ export class EmployeeTableComponent implements OnInit {
 
   prevPage() {
     if (this.pagingData?.hasPrevious) {
-      this.pageNumber--;
-      this.getEmployees();
+      return this.pagingData.currentPage - 1;
     }
+    return this.pagingData?.currentPage;
   }
 
   nextPage() {
     if (this.pagingData?.hasNext) {
-      this.pageNumber++;
-      this.getEmployees();
+      return this.pagingData.currentPage + 1;
     }
+    return this.pagingData?.currentPage;
   }
 
   private getQueryParams() {

@@ -93,16 +93,16 @@ export class EquipmentTableComponent implements OnInit {
 
   prevPage() {
     if (this.pagingData?.hasPrevious) {
-      this.pageNumber--;
-      this.getEquipments();
+      return this.pagingData.currentPage - 1;
     }
+    return this.pagingData?.currentPage;
   }
 
   nextPage() {
     if (this.pagingData?.hasNext) {
-      this.pageNumber++;
-      this.getEquipments();
+      return this.pagingData.currentPage + 1;
     }
+    return this.pagingData?.currentPage;
   }
 
   private getQueryParams() {
