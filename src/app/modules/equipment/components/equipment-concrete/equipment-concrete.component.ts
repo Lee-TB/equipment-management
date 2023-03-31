@@ -126,6 +126,7 @@ export class EquipmentConcreteComponent implements OnInit {
           this.alertService.setContent(res.message);
           this.alertService.setDuration(2000);
           this.getConcreteEquipments();
+          this.openModal = false;
         }
       });
   }
