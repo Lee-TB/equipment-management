@@ -25,6 +25,8 @@
   </div>
 </div>
 
+<div class="mb-10"></div>
+
 <h3
   *ngIf="borrowings && borrowings.length > 0"
   class="mb-5 font-medium text-xl md:text-2xl"
@@ -33,11 +35,11 @@
 </h3>
 <div
   *ngIf="borrowings && borrowings.length > 0"
-  class="relative overflow-x-auto"
+  class="relative overflow-x-auto shadow-md sm:rounded-lg border"
 >
   <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
     <thead
-      class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
+      class="text-xs text-gray-700 uppercase bg-gray-200 dark:bg-gray-700 dark:text-gray-400"
     >
       <tr>
         <th scope="col" class="px-6 py-3">ID</th>
@@ -55,8 +57,8 @@
         *ngFor="let borrowing of borrowings; index as i"
         [class]="
           i % 2 === 0
-            ? 'bg-white border-b dark:bg-gray-900 dark:border-gray-700'
-            : 'border-b bg-gray-50 dark:bg-gray-800 dark:border-gray-700'
+            ? 'bg-white dark:bg-gray-900 dark:border-gray-700'
+            : 'bg-gray-50 dark:bg-gray-800 dark:border-gray-700'
         "
       >
         <th
@@ -99,6 +101,7 @@
     </tbody>
   </table>
 </div>
+<div class="mb-10"></div>
 
 <h3 class="my-5 font-medium text-xl md:text-2xl">Equipments table</h3>
 
