@@ -61,7 +61,7 @@ export class EquipmentTableComponent implements OnInit {
   };
   pages: number[] = [];
   pageNumber: number = 1;
-  pageSize: number = 5;
+  pageSize: number = 4;
 
   constructor(
     private equipmentService: EquipmentService,
