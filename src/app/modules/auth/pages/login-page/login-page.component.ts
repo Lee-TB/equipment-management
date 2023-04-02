@@ -34,8 +34,8 @@ export class LoginPageComponent {
       };
 
       const observer = {
-        next: (value: any) => {
-          if (value) {
+        next: (res: any) => {
+          if (res.statusCode >= 200 && res.statusCode < 300) {
             this.alertService.setType('success');
             this.alertService.setContent('Login success!');
             this.alertService.setDuration(2000);
