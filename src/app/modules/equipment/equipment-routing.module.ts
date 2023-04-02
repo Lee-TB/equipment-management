@@ -4,6 +4,7 @@ import { EquipmentPageComponent } from './pages/equipment-page/equipment-page.co
 import { EquipmentTableComponent } from './components/equipment-table/equipment-table.component';
 import { EquipmentFormComponent } from './components/equipment-form/equipment-form.component';
 import { EquipmentConcreteComponent } from './components/equipment-concrete/equipment-concrete.component';
+import { AdminGuard } from 'src/app/shared/guards/admin/admin.guard';
 
 const routes: Routes = [
   {
@@ -21,10 +22,12 @@ const routes: Routes = [
       },
       {
         path: 'new',
+        canActivate: [AdminGuard],
         component: EquipmentFormComponent,
       },
       {
         path: 'edit/:id',
+        canActivate: [AdminGuard],
         component: EquipmentFormComponent,
       },
       {

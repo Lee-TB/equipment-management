@@ -5,6 +5,7 @@ import { EmployeeTableComponent } from './components/employee-table/employee-tab
 import { EmployeeFormComponent } from './components/employee-form/employee-form.component';
 import { AssignmentComponent } from './components/assignment/assignment.component';
 import { EquipmentConcreteComponent } from '../equipment/components/equipment-concrete/equipment-concrete.component';
+import { AdminGuard } from 'src/app/shared/guards/admin/admin.guard';
 
 const routes: Routes = [
   {
@@ -22,10 +23,12 @@ const routes: Routes = [
       },
       {
         path: 'new',
+        canActivate: [AdminGuard],
         component: EmployeeFormComponent,
       },
       {
         path: 'edit/:id',
+        canActivate: [AdminGuard],
         component: EmployeeFormComponent,
       },
       {
