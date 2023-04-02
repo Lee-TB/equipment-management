@@ -13,7 +13,10 @@ export class EquipmentTypeComponent implements OnInit {
     private alertService: AlertService
   ) {}
   types?: [];
+  brands?: [];
   typeName: string = '';
+  brandName: string = '';
+  typeId?: number;
 
   ngOnInit(): void {
     this.getTypes();
@@ -43,6 +46,35 @@ export class EquipmentTypeComponent implements OnInit {
     }
   }
 
+  addEquipmentBrand() {
+    if (this.brandName) {
+      const blob = new Blob([], { type: 'image/jpeg' });
+      const file = new File([blob], 'empty_image.jpg', { type: 'image/jpeg' });
+
+      const data = {
+        name: this.brandName,
+        image: file,
+        deviceTypeId: this.typeId,
+        description: 'null',
+      };
+
+      const formData = new FormData();
+
+      for (const [key, value] of Object.entries(data)) {
+        formData.append(key, <string>value);
+      }
+
+      this.equipmentService.addABrand(formData).subscribe((res: any) => {
+        if (res.statusCode >= 200 && res.statusCode < 300) {
+          this.alertService.setType('success');
+          this.alertService.setContent(res.message);
+          this.alertService.setDuration(2000);
+          this.getBrands();
+        }
+      });
+    }
+  }
+
   removeType(typeId: number) {
     if (window.confirm('Are you sure?')) {
       this.equipmentService.removeAType(typeId).subscribe((res: any) => {
@@ -53,6 +85,38 @@ export class EquipmentTypeComponent implements OnInit {
           this.getTypes();
         }
       });
+    }
+  }
+
+  showBrands(typeId: number) {
+    this.typeId = typeId;
+    if (this.typeId) {
+      this.getBrands();
+    }
+  }
+
+  getBrands() {
+    if (this.typeId) {
+      this.equipmentService.getBrands(this.typeId).subscribe((res: any) => {
+        if (res.statusCode >= 200 && res.statusCode < 300) {
+          this.brands = res.data;
+        }
+      });
+    }
+  }
+
+  removeBrand(brandId: number) {
+    if (brandId) {
+      if (window.confirm('Are you sure?')) {
+        this.equipmentService.removeABrand(brandId).subscribe((res: any) => {
+          if (res.statusCode >= 200 && res.statusCode < 300) {
+            this.alertService.setType('success');
+            this.alertService.setContent(res.message);
+            this.alertService.setDuration(2000);
+            this.getBrands();
+          }
+        });
+      }
     }
   }
 }

@@ -86,9 +86,25 @@ export class EquipmentService {
       .post(this.baseURL + `api/device-types/`, data, this.httpOptions)
       .pipe(tap((value) => {}));
   }
+
   removeAType(typeId: number) {
     return this.http
       .delete(this.baseURL + `api/device-types/${typeId}`, this.httpOptions)
+      .pipe(tap((value) => {}));
+  }
+
+  removeABrand(brandId: number) {
+    return this.http
+      .delete(
+        this.baseURL + `api/equipment-brands/${brandId}`,
+        this.httpOptions
+      )
+      .pipe(tap((value) => {}));
+  }
+
+  addABrand(data: any) {
+    return this.http
+      .post(this.baseURL + `api/equipment-brands/`, data, this.httpOptions)
       .pipe(tap((value) => {}));
   }
 }

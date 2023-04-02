@@ -5,7 +5,6 @@ import { EquipmentTableComponent } from './components/equipment-table/equipment-
 import { EquipmentFormComponent } from './components/equipment-form/equipment-form.component';
 import { EquipmentConcreteComponent } from './components/equipment-concrete/equipment-concrete.component';
 import { AdminGuard } from 'src/app/shared/guards/admin/admin.guard';
-import { EquipmentBrandComponent } from './components/equipment-brand/equipment-brand.component';
 import { EquipmentTypeComponent } from './components/equipment-type/equipment-type.component';
 
 const routes: Routes = [
@@ -39,10 +38,6 @@ const routes: Routes = [
       {
         path: 'type',
         component: EquipmentTypeComponent,
-      },
-      {
-        path: 'brand',
-        component: EquipmentBrandComponent,
       },
     ],
   },
