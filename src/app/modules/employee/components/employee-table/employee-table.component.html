@@ -5,22 +5,22 @@
     >
       <tr>
         <ng-template ngFor let-column [ngForOf]="columns">
-          <ng-template *ngIf="column.dataIndex !== 'action'">
-            <th
-              *ngIf="column.dataIndex === 'fullName'"
-              scope="col"
-              class="px-6 py-3"
-            >
-              {{ column.title }}
-            </th>
-            <th
-              *ngIf="column.dataIndex !== 'fullName'"
-              scope="col"
-              class="px-6 py-3"
-            >
-              {{ column.title }}
-            </th>
-          </ng-template>
+          <th
+            *ngIf="column.dataIndex === 'fullName'"
+            scope="col"
+            class="px-6 py-3"
+          >
+            {{ column.title }}
+          </th>
+          <th
+            *ngIf="
+              column.dataIndex !== 'fullName' && column.dataIndex !== 'action'
+            "
+            scope="col"
+            class="px-6 py-3"
+          >
+            {{ column.title }}
+          </th>
           <th
             *ngIf="column.dataIndex === 'action' && isAdmin()"
             scope="col"
