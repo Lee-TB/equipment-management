@@ -1,4 +1,15 @@
-<h3 class="mb-5 font-medium text-xl md:text-2xl">Employee information</h3>
+<h3
+  *ngIf="!currentPath.includes('my-assignment')"
+  class="mb-5 font-medium text-xl md:text-2xl"
+>
+  Employee information
+</h3>
+<h3
+  *ngIf="currentPath.includes('my-assignment')"
+  class="mb-5 font-medium text-xl md:text-2xl"
+>
+  My information
+</h3>
 <div *ngIf="employee">
   <div class="flex gap-4 mb-6">
     <figure class="w-20">
@@ -31,12 +42,22 @@
 
 <div class="mb-10"></div>
 
-<h3
-  *ngIf="borrowings && borrowings.length > 0"
-  class="mb-5 font-medium text-xl md:text-2xl"
->
-  Borrowed equipments
-</h3>
+<div *ngIf="!currentPath.includes('my-assignment')">
+  <h3
+    *ngIf="borrowings && borrowings.length > 0"
+    class="mb-5 font-medium text-xl md:text-2xl"
+  >
+    Borrowed equipments
+  </h3>
+</div>
+<div *ngIf="currentPath.includes('my-assignment')">
+  <h3
+    *ngIf="borrowings && borrowings.length > 0"
+    class="mb-5 font-medium text-xl md:text-2xl"
+  >
+    My Assignment
+  </h3>
+</div>
 <div
   *ngIf="borrowings && borrowings.length > 0"
   class="relative overflow-x-auto shadow-md sm:rounded-lg border"
