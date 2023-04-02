@@ -9,7 +9,7 @@ import { UserService } from 'src/app/shared/services/user/user.service';
   styleUrls: ['./equipment-page.component.css'],
 })
 export class EquipmentPageComponent implements OnInit {
-  selectedTab?: 'table' | 'new' | 'brand';
+  selectedTab?: 'table' | 'new' | 'brand' | 'type';
   currentPath = this.location.path();
 
   constructor(
@@ -22,12 +22,12 @@ export class EquipmentPageComponent implements OnInit {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         this.currentPath = event.urlAfterRedirects;
-        this.selectedTab = <'table' | 'new' | 'brand'>(
+        this.selectedTab = <'table' | 'new' | 'brand' | 'type'>(
           this.currentPath.split('/')[2]
         );
       }
     });
-    this.selectedTab = <'table' | 'new' | 'brand'>(
+    this.selectedTab = <'table' | 'new' | 'brand' | 'type'>(
       this.currentPath.split('/')[2]
     );
   }

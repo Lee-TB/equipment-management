@@ -58,6 +58,17 @@
 
   <li *ngIf="isAdmin()">
     <a
+      routerLink="type"
+      [ngClass]="
+        selectedTab === 'type' ? 'bg-gray-500 hover:bg-gray-500 text-white' : ''
+      "
+      class="flex items-center p-2 text-base font-medium text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+    >
+      <span class="ml-3">Manage type</span>
+    </a>
+  </li>
+  <li *ngIf="isAdmin()">
+    <a
       routerLink="brand"
       [ngClass]="
         selectedTab === 'brand'

@@ -6,6 +6,7 @@ import { EquipmentFormComponent } from './components/equipment-form/equipment-fo
 import { EquipmentConcreteComponent } from './components/equipment-concrete/equipment-concrete.component';
 import { AdminGuard } from 'src/app/shared/guards/admin/admin.guard';
 import { EquipmentBrandComponent } from './components/equipment-brand/equipment-brand.component';
+import { EquipmentTypeComponent } from './components/equipment-type/equipment-type.component';
 
 const routes: Routes = [
   {
@@ -34,6 +35,10 @@ const routes: Routes = [
       {
         path: 'concrete/:equipmentId',
         component: EquipmentConcreteComponent,
+      },
+      {
+        path: 'type',
+        component: EquipmentTypeComponent,
       },
       {
         path: 'brand',
