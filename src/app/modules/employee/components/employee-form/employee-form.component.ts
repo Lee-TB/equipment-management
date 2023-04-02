@@ -89,7 +89,7 @@ export class EmployeeFormComponent implements OnInit {
             this.alertService.setType('success');
             this.alertService.setContent(res.message);
             this.alertService.setDuration(2000);
-            this.router.navigate(['/employees/table']);
+            this.location.back();
           }
         });
       } else if (this.formType === 'edit' && this.employeeId) {
@@ -101,7 +101,7 @@ export class EmployeeFormComponent implements OnInit {
               this.alertService.setType('success');
               this.alertService.setContent(res.message);
               this.alertService.setDuration(2000);
-              this.router.navigate(['/employees/table']);
+              this.location.back();
             }
           });
       }

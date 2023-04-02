@@ -108,11 +108,10 @@ export class EquipmentFormComponent implements OnInit {
       if (this.formType === 'new') {
         this.equipmentService.addAnEquipment(formData).subscribe((res: any) => {
           if (res.statusCode >= 200 && res.statusCode < 300) {
-            console.log(res);
             this.alertService.setType('success');
             this.alertService.setContent(res.message);
             this.alertService.setDuration(2000);
-            this.router.navigate(['/equipments/table']);
+            this.location.back();
           }
         });
       } else if (this.formType === 'edit') {
@@ -120,11 +119,10 @@ export class EquipmentFormComponent implements OnInit {
           .updateAnEquipment(this.equipmentId, formData)
           .subscribe((res: any) => {
             if (res.statusCode >= 200 && res.statusCode < 300) {
-              console.log(res);
               this.alertService.setType('success');
               this.alertService.setContent(res.message);
               this.alertService.setDuration(2000);
-              this.router.navigate(['/equipments/table']);
+              this.location.back();
             }
           });
       }
