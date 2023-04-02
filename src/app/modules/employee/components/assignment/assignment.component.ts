@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component, Inject, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AlertService } from 'src/app/shared/services/alert/alert.service';
@@ -18,13 +19,16 @@ export class AssignmentComponent implements OnInit {
   borrowingId?: number;
   borrowings?: [];
   openModal: boolean = false;
+  currentPath = this.location.path();
 
   constructor(
     private employeeService: EmployeeService,
     private assignmentService: AssignmentService,
     private activatedRoute: ActivatedRoute,
+    private location: Location,
     private alertService: AlertService,
     private userService: UserService,
+
     @Inject('baseURL') private baseURL: string
   ) {}
 

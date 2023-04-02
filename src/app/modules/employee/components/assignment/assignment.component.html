@@ -107,9 +107,11 @@
 </div>
 <div class="mb-10"></div>
 
-<h3 class="my-5 font-medium text-xl md:text-2xl">Equipments to borrow</h3>
+<div *ngIf="!currentPath.includes('my-assignment')">
+  <h3 class="my-5 font-medium text-xl md:text-2xl">Equipments to borrow</h3>
 
-<app-equipment-table [isTableToAssign]="true"></app-equipment-table>
+  <app-equipment-table [isTableToAssign]="true"></app-equipment-table>
+</div>
 
 <!-- Modal -->
 <div

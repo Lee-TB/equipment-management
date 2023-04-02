@@ -5,6 +5,7 @@ import { ContentLayoutComponent } from './layouts/content-layout/content-layout.
 import { PageNotFoundComponent } from './layouts/page-not-found/page-not-found.component';
 import { AuthGuard } from './shared/guards/auth/auth.guard';
 import { LogoutComponent } from './shared/components/logout/logout.component';
+import { AssignmentComponent } from './modules/employee/components/assignment/assignment.component';
 
 const routes: Routes = [
   {
@@ -32,11 +33,8 @@ const routes: Routes = [
           ),
       },
       {
-        path: 'my-assignment',
-        loadChildren: () =>
-          import('./modules/employee/employee.module').then(
-            (m) => m.EmployeeModule
-          ),
+        path: 'my-assignment/assign/:id',
+        component: AssignmentComponent,
       },
     ],
   },
