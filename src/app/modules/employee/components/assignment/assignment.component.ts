@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { AlertService } from 'src/app/shared/services/alert/alert.service';
 import { AssignmentService } from 'src/app/shared/services/assignment/assignment.service';
 import { EmployeeService } from 'src/app/shared/services/employee/employee.service';
+import { UserService } from 'src/app/shared/services/user/user.service';
 import { formatCurrency } from 'src/app/shared/utils/formatCurency';
 import { formatDate } from 'src/app/shared/utils/formatDate';
 
@@ -23,6 +24,7 @@ export class AssignmentComponent implements OnInit {
     private assignmentService: AssignmentService,
     private activatedRoute: ActivatedRoute,
     private alertService: AlertService,
+    private userService: UserService,
     @Inject('baseURL') private baseURL: string
   ) {}
 
@@ -91,6 +93,10 @@ export class AssignmentComponent implements OnInit {
           }
         });
     }
+  }
+
+  isAdmin() {
+    return this.userService.isAdmin();
   }
 
   // for modal
