@@ -1,6 +1,7 @@
 import { Location } from '@angular/common';
 import { Component } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
+import { UserService } from 'src/app/shared/services/user/user.service';
 
 @Component({
   selector: 'app-employee-page',
@@ -11,7 +12,11 @@ export class EmployeePageComponent {
   selectedTab: 'table' | 'new' | 'assign' = 'table';
   currentPath = this.location.path();
 
-  constructor(private location: Location, private router: Router) {}
+  constructor(
+    private location: Location,
+    private router: Router,
+    private userService: UserService
+  ) {}
 
   ngOnInit(): void {
     this.router.events.subscribe((event) => {
@@ -27,5 +32,7 @@ export class EmployeePageComponent {
     );
   }
 
-  ngOnDestroy() {}
+  isAdmin() {
+    return this.userService.isAdmin();
+  }
 }

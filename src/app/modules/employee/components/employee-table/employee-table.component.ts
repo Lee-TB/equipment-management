@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { AlertService } from 'src/app/shared/services/alert/alert.service';
 import { EmployeeService } from 'src/app/shared/services/employee/employee.service';
+import { UserService } from 'src/app/shared/services/user/user.service';
 import { arrayFillIncrement } from 'src/app/shared/utils/arrayFillIncrement';
 import { formatDate } from 'src/app/shared/utils/formatDate';
 
@@ -78,7 +79,8 @@ export class EmployeeTableComponent implements OnInit {
     private employeeService: EmployeeService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    private alertService: AlertService
+    private alertService: AlertService,
+    private userService: UserService
   ) {}
 
   ngOnInit(): void {
@@ -157,5 +159,9 @@ export class EmployeeTableComponent implements OnInit {
         }
       });
     }
+  }
+
+  isAdmin() {
+    return this.userService.isAdmin();
   }
 }
