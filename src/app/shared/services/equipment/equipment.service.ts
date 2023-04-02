@@ -80,4 +80,15 @@ export class EquipmentService {
       .get(this.baseURL + `api/device-types/`, this.httpOptions)
       .pipe(tap((value) => {}));
   }
+
+  addAType(data: any) {
+    return this.http
+      .post(this.baseURL + `api/device-types/`, data, this.httpOptions)
+      .pipe(tap((value) => {}));
+  }
+  removeAType(typeId: number) {
+    return this.http
+      .delete(this.baseURL + `api/device-types/${typeId}`, this.httpOptions)
+      .pipe(tap((value) => {}));
+  }
 }

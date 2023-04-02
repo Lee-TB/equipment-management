@@ -6,6 +6,7 @@ import { EquipmentRoutingModule } from './equipment-routing.module';
 import { EquipmentPageComponent } from './pages/equipment-page/equipment-page.component';
 import { EquipmentFormComponent } from './components/equipment-form/equipment-form.component';
 import { EquipmentConcreteComponent } from './components/equipment-concrete/equipment-concrete.component';
+import { EquipmentTypeComponent } from './components/equipment-type/equipment-type.component';
 
 @NgModule({
   imports: [
@@ -18,6 +19,7 @@ import { EquipmentConcreteComponent } from './components/equipment-concrete/equi
     EquipmentPageComponent,
     EquipmentFormComponent,
     EquipmentConcreteComponent,
+    EquipmentTypeComponent,
   ],
 })
 export class EquipmentModule {}

@@ -1,1 +1,66 @@
-<p>equipment-type works!</p>
+<div id="new-equipment-type" class="mt-4">
+  <div class="mb-6 mr-2 inline-block w-96">
+    <label
+      for="typeName"
+      class="block mb-2 text-sm font-medium text-gray-900 dark:text-white sr-only"
+      >Type</label
+    >
+    <input
+      [(ngModel)]="typeName"
+      type="text"
+      id="typeName"
+      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+    />
+  </div>
+
+  <button
+    (click)="addEquipmentType()"
+    type="button"
+    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+  >
+    Add equipment type
+  </button>
+</div>
+
+<div *ngIf="types && types.length > 0">
+  <h2 class="mb-10 font-medium text-3xl md:text-4xl">Equipment types</h2>
+  <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+      <thead
+        class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
+      >
+        <tr>
+          <th scope="col" class="px-6 py-3">ID</th>
+          <th scope="col" class="px-6 py-3">Name</th>
+          <th scope="col" class="px-6 py-3">Createa at</th>
+          <!-- <th scope="col" class="px-6 py-3">Update at</th> -->
+          <th scope="col" class="px-6 py-3">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-template ngFor let-type [ngForOf]="types" let-index="index">
+          <tr
+            [class]="
+              index % 2 === 0
+                ? 'bg-white border-b dark:bg-gray-900 dark:border-gray-700'
+                : 'border-b bg-gray-50 dark:bg-gray-800 dark:border-gray-700'
+            "
+          >
+            <th scope="row" class="px-6 py-4">{{ type["id"] }}</th>
+            <th scope="row" class="px-6 py-4">{{ type["name"] }}</th>
+            <th scope="row" class="px-6 py-4">{{ type["createdAt"] }}</th>
+            <!-- <th scope="row" class="px-6 py-4">{{ type["updatedAt"] }}</th> -->
+            <th scope="row" class="px-6 py-4">
+              <button
+                class="font-medium text-red-600 dark:text-red-500 hover:underline"
+                (click)="removeType(type['id'])"
+              >
+                Remove
+              </button>
+            </th>
+          </tr>
+        </ng-template>
+      </tbody>
+    </table>
+  </div>
+</div>
