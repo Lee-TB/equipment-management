@@ -34,4 +34,10 @@ export class SidebarComponent implements OnInit {
   isUser() {
     return !this.userService.isAdmin();
   }
+
+  logout() {
+    if (window.confirm('Are you want to logout?')) {
+      this.router.navigate(['logout']);
+    }
+  }
 }

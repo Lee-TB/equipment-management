@@ -130,8 +130,8 @@
 
     <li *ngIf="isLoggedIn">
       <a
-        routerLink="logout"
-        class="flex items-center p-2 text-base font-medium text-white rounded-lg bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl"
+        (click)="logout()"
+        class="cursor-pointer flex items-center p-2 text-base font-medium text-white rounded-lg bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl"
       >
         <svg
           class="flex-shrink-0 w-6 h-6 text-white transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
