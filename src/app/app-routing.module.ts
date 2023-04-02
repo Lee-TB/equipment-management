@@ -18,13 +18,6 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     children: [
       {
-        path: 'dashboard',
-        loadChildren: () =>
-          import('./modules/dashboard/dashboard.module').then(
-            (m) => m.DashboardModule
-          ),
-      },
-      {
         path: 'equipments',
         loadChildren: () =>
           import('./modules/equipment/equipment.module').then(
@@ -36,13 +29,6 @@ const routes: Routes = [
         loadChildren: () =>
           import('./modules/employee/employee.module').then(
             (m) => m.EmployeeModule
-          ),
-      },
-      {
-        path: 'assignments',
-        loadChildren: () =>
-          import('./modules/assignment/assignment.module').then(
-            (m) => m.AssignmentModule
           ),
       },
     ],
