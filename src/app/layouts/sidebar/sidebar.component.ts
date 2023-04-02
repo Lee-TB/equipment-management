@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { UserService } from 'src/app/shared/services/user/user.service';
 
-type TabType = 'dashboard' | 'equipments' | 'employees' | 'assignments';
+type TabType = 'dashboard' | 'equipments' | 'employees' | 'my-assignment';
 
 @Component({
   selector: 'app-sidebar',
@@ -14,6 +14,7 @@ export class SidebarComponent implements OnInit {
   isLoggedIn: boolean = this.userService.isLoggedIn();
   selectedTab?: TabType;
   currentPath = this.location.path();
+  userId = this.userService.getUser().userId;
   constructor(
     private userService: UserService,
     private location: Location,
@@ -28,5 +29,9 @@ export class SidebarComponent implements OnInit {
       }
     });
     this.selectedTab = <TabType>this.currentPath.split('/')[1];
+  }
+
+  isUser() {
+    return !this.userService.isAdmin();
   }
 }

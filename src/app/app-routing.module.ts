@@ -31,6 +31,13 @@ const routes: Routes = [
             (m) => m.EmployeeModule
           ),
       },
+      {
+        path: 'my-assignment',
+        loadChildren: () =>
+          import('./modules/employee/employee.module').then(
+            (m) => m.EmployeeModule
+          ),
+      },
     ],
   },
   {

@@ -1,5 +1,5 @@
 <aside
-  class="h-full sidebar w-48 -translate-x-full transform bg-white p-4 transition-transform duration-150 ease-in md:translate-x-0 md:shadow-md"
+  class="h-full sidebar w-52 -translate-x-full transform bg-white p-4 transition-transform duration-150 ease-in md:translate-x-0 md:shadow-md"
 >
   <div class="my-4 w-full border-b-4 border-indigo-100 text-center">
     <span class="font-mono text-xl font-bold tracking-widest">
@@ -105,6 +105,29 @@
     </li>
 
     <div class="border-b"></div>
+
+    <li>
+      <a
+        [routerLink]="['my-assignment/assign', userId]"
+        [ngClass]="
+          selectedTab === 'my-assignment'
+            ? 'bg-gray-500 hover:bg-gray-500 text-white'
+            : ''
+        "
+        class="flex items-center p-2 text-base font-medium text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+      >
+        <i
+          [ngClass]="
+            selectedTab === 'my-assignment'
+              ? 'bg-gray-500 hover:bg-gray-500 text-white'
+              : ''
+          "
+          class="large material-icons text-gray-500 hover:bg-gray-100"
+          >assignment
+        </i>
+        <span class="flex-1 ml-3 whitespace-nowrap">My assignment</span>
+      </a>
+    </li>
 
     <li *ngIf="isLoggedIn">
       <a
