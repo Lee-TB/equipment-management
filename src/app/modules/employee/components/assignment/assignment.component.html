@@ -6,6 +6,10 @@
     </figure>
     <div class="flex flex-col justify-center">
       <div>
+        <strong>Equipment ID: </strong>
+        <i>{{ employee["id"] }}</i>
+      </div>
+      <div>
         <strong>Full name: </strong>
         <i>{{ employee["fullName"] }}</i>
       </div>
@@ -31,7 +35,7 @@
   *ngIf="borrowings && borrowings.length > 0"
   class="mb-5 font-medium text-xl md:text-2xl"
 >
-  Borrowing equipment table
+  Borrowed equipments
 </h3>
 <div
   *ngIf="borrowings && borrowings.length > 0"
@@ -71,7 +75,7 @@
         <td class="px-6 py-4">{{ borrowing["deviceTypeName"] }}</td>
         <td class="px-6 py-4">{{ borrowing["equipmentBrandName"] }}</td>
         <td class="px-6 py-4">
-          {{ borrowing["concreteEquipmentPrice"] | currency }}
+          {{ borrowing["concreteEquipmentPrice"] }}
         </td>
         <td class="px-6 py-4">
           <span
@@ -103,7 +107,7 @@
 </div>
 <div class="mb-10"></div>
 
-<h3 class="my-5 font-medium text-xl md:text-2xl">Equipments table</h3>
+<h3 class="my-5 font-medium text-xl md:text-2xl">Equipments to borrow</h3>
 
 <app-equipment-table [isTableToAssign]="true"></app-equipment-table>
 
