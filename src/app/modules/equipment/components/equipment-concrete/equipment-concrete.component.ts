@@ -5,6 +5,7 @@ import { AlertService } from 'src/app/shared/services/alert/alert.service';
 import { AssignmentService } from 'src/app/shared/services/assignment/assignment.service';
 import { ConcreteEquipmentServiceService } from 'src/app/shared/services/concrete-equipment/concrete-equipment-service.service';
 import { EquipmentService } from 'src/app/shared/services/equipment/equipment.service';
+import { formatCurrency } from 'src/app/shared/utils/formatCurency';
 import { formatDate } from 'src/app/shared/utils/formatDate';
 
 @Component({
@@ -63,6 +64,7 @@ export class EquipmentConcreteComponent implements OnInit {
             this.concreteEquipments = res.data.map((item: any) => {
               return {
                 ...item,
+                price: formatCurrency(item.price),
                 createdAt:
                   (item.createdAt && formatDate(new Date(item.createdAt))) ||
                   'null',

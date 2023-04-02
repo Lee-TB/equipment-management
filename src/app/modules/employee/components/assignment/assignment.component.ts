@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { AlertService } from 'src/app/shared/services/alert/alert.service';
 import { AssignmentService } from 'src/app/shared/services/assignment/assignment.service';
 import { EmployeeService } from 'src/app/shared/services/employee/employee.service';
+import { formatCurrency } from 'src/app/shared/utils/formatCurency';
 import { formatDate } from 'src/app/shared/utils/formatDate';
 
 @Component({
@@ -61,6 +62,9 @@ export class AssignmentComponent implements OnInit {
               return {
                 ...row,
                 returnDate: formatDate(new Date(row.returnDate)),
+                concreteEquipmentPrice: formatCurrency(
+                  row.concreteEquipmentPrice
+                ),
               };
             });
             const filteredData = formatedData.filter(
