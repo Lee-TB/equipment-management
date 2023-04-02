@@ -2,6 +2,7 @@ import { Component, Inject, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { AlertService } from 'src/app/shared/services/alert/alert.service';
 import { EquipmentService } from 'src/app/shared/services/equipment/equipment.service';
+import { UserService } from 'src/app/shared/services/user/user.service';
 import { arrayFillIncrement } from 'src/app/shared/utils/arrayFillIncrement';
 
 @Component({
@@ -68,6 +69,7 @@ export class EquipmentTableComponent implements OnInit {
     private alertService: AlertService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
+    private userService: UserService,
     @Inject('baseURL') private baseURL: string
   ) {}
 
@@ -151,5 +153,9 @@ export class EquipmentTableComponent implements OnInit {
         }
       });
     }
+  }
+
+  isAdmin() {
+    return this.userService.isAdmin();
   }
 }

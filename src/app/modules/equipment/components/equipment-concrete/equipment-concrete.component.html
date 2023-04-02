@@ -79,7 +79,7 @@
           <th scope="col" class="px-6 py-3">Status</th>
           <th scope="col" class="px-6 py-3">Create at</th>
           <th scope="col" class="px-6 py-3">Update at</th>
-          <th scope="col" class="px-6 py-3">Action</th>
+          <th *ngIf="isAdmin()" scope="col" class="px-6 py-3">Action</th>
         </tr>
       </thead>
       <tbody>
@@ -124,7 +124,7 @@
             <td class="px-6 py-4">
               {{ concrete["updatedAt"] }}
             </td>
-            <td class="px-6 py-4">
+            <td *ngIf="isAdmin()" class="px-6 py-4">
               <button
                 *ngIf="!employeeId"
                 class="font-medium text-red-600 dark:text-red-500 hover:underline"

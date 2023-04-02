@@ -5,6 +5,7 @@ import { AlertService } from 'src/app/shared/services/alert/alert.service';
 import { AssignmentService } from 'src/app/shared/services/assignment/assignment.service';
 import { ConcreteEquipmentServiceService } from 'src/app/shared/services/concrete-equipment/concrete-equipment-service.service';
 import { EquipmentService } from 'src/app/shared/services/equipment/equipment.service';
+import { UserService } from 'src/app/shared/services/user/user.service';
 import { formatCurrency } from 'src/app/shared/utils/formatCurency';
 import { formatDate } from 'src/app/shared/utils/formatDate';
 
@@ -29,7 +30,8 @@ export class EquipmentConcreteComponent implements OnInit {
     private equipmentService: EquipmentService,
     private concreteEquipmentService: ConcreteEquipmentServiceService,
     private assignmentService: AssignmentService,
-    private alertService: AlertService
+    private alertService: AlertService,
+    private userService: UserService
   ) {}
 
   ngOnInit(): void {
@@ -135,6 +137,10 @@ export class EquipmentConcreteComponent implements OnInit {
 
   onDatePickerChange(event: Event) {
     this.expiredDate = new Date((<HTMLInputElement>event.target).value);
+  }
+
+  isAdmin() {
+    return this.userService.isAdmin();
   }
 
   // for modal

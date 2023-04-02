@@ -38,12 +38,14 @@
                 >
 
                 <a
+                  *ngIf="isAdmin()"
                   [routerLink]="['/equipments/edit', data['id']]"
                   class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
                   >Edit</a
                 >
 
                 <button
+                  *ngIf="isAdmin()"
                   class="font-medium text-red-600 dark:text-red-500 hover:underline"
                   (click)="removeEquipment(data['id'])"
                 >

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { NavigationEnd, Router } from '@angular/router';
+import { UserService } from 'src/app/shared/services/user/user.service';
 
 @Component({
   selector: 'app-equipment-page',
@@ -11,7 +12,11 @@ export class EquipmentPageComponent implements OnInit {
   selectedTab?: 'table' | 'new';
   currentPath = this.location.path();
 
-  constructor(private location: Location, private router: Router) {}
+  constructor(
+    private location: Location,
+    private router: Router,
+    private userService: UserService
+  ) {}
 
   ngOnInit(): void {
     this.router.events.subscribe((event) => {
@@ -23,5 +28,7 @@ export class EquipmentPageComponent implements OnInit {
     this.selectedTab = <'table' | 'new'>this.currentPath.split('/')[2];
   }
 
-  ngOnDestroy() {}
+  isAdmin() {
+    return this.userService.isAdmin();
+  }
 }
