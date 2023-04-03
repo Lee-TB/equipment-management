@@ -23,12 +23,12 @@ const routes: Routes = [
       },
       {
         path: 'new',
-        canActivate: [AdminGuard],
+        canMatch: [AdminGuard],
         component: EquipmentFormComponent,
       },
       {
         path: 'edit/:id',
-        canActivate: [AdminGuard],
+        canMatch: [AdminGuard],
         component: EquipmentFormComponent,
       },
       {
@@ -37,6 +37,7 @@ const routes: Routes = [
       },
       {
         path: 'type',
+        canMatch: [AdminGuard],
         component: EquipmentTypeComponent,
       },
     ],

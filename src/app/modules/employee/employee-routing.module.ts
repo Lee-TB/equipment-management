@@ -4,7 +4,7 @@ import { EmployeePageComponent } from './pages/employee-page/employee-page.compo
 import { EmployeeTableComponent } from './components/employee-table/employee-table.component';
 import { EmployeeFormComponent } from './components/employee-form/employee-form.component';
 import { AssignmentComponent } from './components/assignment/assignment.component';
-import { EquipmentConcreteComponent } from '../equipment/components/equipment-concrete/equipment-concrete.component';
+import { EquipmentConcreteComponent } from '../equipment/pages/equipment-concrete/equipment-concrete.component';
 import { AdminGuard } from 'src/app/shared/guards/admin/admin.guard';
 
 const routes: Routes = [
@@ -23,12 +23,12 @@ const routes: Routes = [
       },
       {
         path: 'new',
-        canActivate: [AdminGuard],
+        canMatch: [AdminGuard],
         component: EmployeeFormComponent,
       },
       {
         path: 'edit/:id',
-        canActivate: [AdminGuard],
+        canMatch: [AdminGuard],
         component: EmployeeFormComponent,
       },
       {

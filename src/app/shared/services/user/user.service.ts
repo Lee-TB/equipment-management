@@ -55,7 +55,7 @@ export class UserService {
 
   isAdmin() {
     const user = this.getUser();
-    return user.roles.includes('Admin');
+    return <boolean>user.roles.includes('Admin');
   }
 
   /** Lưu trữ user vào local storage */
