@@ -129,7 +129,7 @@ export class EmployeeTableComponent implements OnInit {
   getEmployees() {
     this.employeeService
       .getEmloyeesByPaging(this.pageNumber, this.pageSize)
-      .subscribe((res) => {
+      .subscribe((res: any) => {
         if (res.statusCode === 200) {
           this.pagingData = res.data[0].metaData;
           if (this.pagingData) {
@@ -149,15 +149,17 @@ export class EmployeeTableComponent implements OnInit {
 
   removeEmployee(employeeId: number) {
     if (window.confirm('Are you sure?')) {
-      this.employeeService.removeAnEmployee(employeeId).subscribe((res) => {
-        if (res.statusCode >= 200 && res.statusCode < 300) {
-          this.alertService.setType('success');
-          this.alertService.setContent(res.message);
-          this.alertService.setDuration(2000);
+      this.employeeService
+        .removeAnEmployee(employeeId)
+        .subscribe((res: any) => {
+          if (res.statusCode >= 200 && res.statusCode < 300) {
+            this.alertService.setType('success');
+            this.alertService.setContent(res.message);
+            this.alertService.setDuration(2000);
 
-          this.getEmployees();
-        }
-      });
+            this.getEmployees();
+          }
+        });
     }
   }
 
