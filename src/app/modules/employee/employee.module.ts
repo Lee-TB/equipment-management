@@ -7,7 +7,7 @@ import { EmployeePageComponent } from './pages/employee-page/employee-page.compo
 import { EmployeeTableComponent } from './components/employee-table/employee-table.component';
 import { EmployeeFormComponent } from './components/employee-form/employee-form.component';
 import { AssignmentComponent } from './components/assignment/assignment.component';
-import { EquipmentTableComponent } from '../equipment/components/equipment-table/equipment-table.component';
+import { EquipmentTableComponent } from '../equipment/pages/equipment-table/equipment-table.component';
 
 @NgModule({
   imports: [CommonModule, ReactiveFormsModule, EmployeeRoutingModule],
