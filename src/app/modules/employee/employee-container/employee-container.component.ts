@@ -4,9 +4,9 @@ import { NavigationEnd, Router } from '@angular/router';
 import { UserService } from 'src/app/shared/services/user/user.service';
 
 @Component({
-  selector: 'app-employee-page',
-  templateUrl: './employee-page.component.html',
-  styleUrls: ['./employee-page.component.css'],
+  selector: 'app-employee-container',
+  templateUrl: './employee-container.component.html',
+  styleUrls: ['./employee-container.component.css'],
 })
 export class EmployeePageComponent {
   selectedTab: 'table' | 'new' | 'assign' = 'table';

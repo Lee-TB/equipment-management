@@ -5,7 +5,7 @@ import { ContentLayoutComponent } from './layouts/content-layout/content-layout.
 import { PageNotFoundComponent } from './layouts/page-not-found/page-not-found.component';
 import { AuthGuard } from './shared/guards/auth/auth.guard';
 import { LogoutComponent } from './shared/components/logout/logout.component';
-import { AssignmentComponent } from './modules/employee/components/assignment/assignment.component';
+import { AssignmentComponent } from './modules/employee/pages/assignment/assignment.component';
 
 const routes: Routes = [
   {
@@ -61,3 +61,4 @@ const routes: Routes = [
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
+``;

@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { EmployeePageComponent } from './pages/employee-page/employee-page.component';
-import { EmployeeTableComponent } from './components/employee-table/employee-table.component';
-import { EmployeeFormComponent } from './components/employee-form/employee-form.component';
-import { AssignmentComponent } from './components/assignment/assignment.component';
 import { EquipmentConcreteComponent } from '../equipment/pages/equipment-concrete/equipment-concrete.component';
 import { AdminGuard } from 'src/app/shared/guards/admin/admin.guard';
+import { EmployeePageComponent } from './employee-container/employee-container.component';
+import { EmployeeTableComponent } from './pages/employee-table/employee-table.component';
+import { EmployeeFormComponent } from './pages/employee-form/employee-form.component';
+import { AssignmentComponent } from './pages/assignment/assignment.component';
 
 const routes: Routes = [
   {
