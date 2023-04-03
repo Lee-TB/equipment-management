@@ -4,9 +4,9 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { EquipmentRoutingModule } from './equipment-routing.module';
 import { EquipmentContainerComponent } from './equipment-container/equipment-container.component';
-import { EquipmentFormComponent } from './components/equipment-form/equipment-form.component';
-import { EquipmentConcreteComponent } from './components/equipment-concrete/equipment-concrete.component';
-import { EquipmentTypeComponent } from './components/equipment-type/equipment-type.component';
+import { EquipmentFormComponent } from './pages/equipment-form/equipment-form.component';
+import { EquipmentConcreteComponent } from './pages/equipment-concrete/equipment-concrete.component';
+import { EquipmentTypeComponent } from './pages/equipment-type/equipment-type.component';
 
 @NgModule({
   imports: [
