@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { EquipmentPageComponent } from './pages/equipment-page/equipment-page.component';
+import { EquipmentContainerComponent } from './equipment-container/equipment-container.component';
 import { EquipmentTableComponent } from './components/equipment-table/equipment-table.component';
 import { EquipmentFormComponent } from './components/equipment-form/equipment-form.component';
 import { EquipmentConcreteComponent } from './components/equipment-concrete/equipment-concrete.component';
@@ -15,7 +15,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    component: EquipmentPageComponent,
+    component: EquipmentContainerComponent,
     children: [
       {
         path: 'table',

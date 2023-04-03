@@ -4,11 +4,11 @@ import { NavigationEnd, Router } from '@angular/router';
 import { UserService } from 'src/app/shared/services/user/user.service';
 
 @Component({
-  selector: 'app-equipment-page',
-  templateUrl: './equipment-page.component.html',
-  styleUrls: ['./equipment-page.component.css'],
+  selector: 'app-equipment-container',
+  templateUrl: './equipment-container.component.html',
+  styleUrls: ['./equipment-container.component.css'],
 })
-export class EquipmentPageComponent implements OnInit {
+export class EquipmentContainerComponent implements OnInit {
   selectedTab?: 'table' | 'new' | 'brand' | 'type';
   currentPath = this.location.path();
 

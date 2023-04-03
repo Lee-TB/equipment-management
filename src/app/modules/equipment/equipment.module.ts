@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { EquipmentRoutingModule } from './equipment-routing.module';
-import { EquipmentPageComponent } from './pages/equipment-page/equipment-page.component';
+import { EquipmentContainerComponent } from './equipment-container/equipment-container.component';
 import { EquipmentFormComponent } from './components/equipment-form/equipment-form.component';
 import { EquipmentConcreteComponent } from './components/equipment-concrete/equipment-concrete.component';
 import { EquipmentTypeComponent } from './components/equipment-type/equipment-type.component';
@@ -16,7 +16,7 @@ import { EquipmentTypeComponent } from './components/equipment-type/equipment-ty
     EquipmentRoutingModule,
   ],
   declarations: [
-    EquipmentPageComponent,
+    EquipmentContainerComponent,
     EquipmentFormComponent,
     EquipmentConcreteComponent,
     EquipmentTypeComponent,
