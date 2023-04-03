@@ -1,4 +1,4 @@
-import { Location, formatDate } from '@angular/common';
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
@@ -60,17 +60,22 @@ export class EmployeeFormComponent implements OnInit {
       this.employeeId = Number(routeParams.get('id'));
 
       if (this.employeeId) {
-        this.emloyeeService.getAnEmployee(this.employeeId).subscribe((res) => {
-          if (res.statusCode >= 200 && res.statusCode < 300) {
-            const employee = res.data[0];
-            this.formGroup = this.formBuilder.group({
-              fullName: [employee.fullName, [Validators.required]],
-              email: [employee.email, [Validators.required, Validators.email]],
-              phoneNumber: [employee.phoneNumber, [Validators.required]],
-              image: [employee.image],
-            });
-          }
-        });
+        this.emloyeeService
+          .getAnEmployee(this.employeeId)
+          .subscribe((res: any) => {
+            if (res.statusCode >= 200 && res.statusCode < 300) {
+              const employee = res.data[0];
+              this.formGroup = this.formBuilder.group({
+                fullName: [employee.fullName, [Validators.required]],
+                email: [
+                  employee.email,
+                  [Validators.required, Validators.email],
+                ],
+                phoneNumber: [employee.phoneNumber, [Validators.required]],
+                image: [employee.image],
+              });
+            }
+          });
       }
     }
   }
@@ -116,7 +121,7 @@ export class EmployeeFormComponent implements OnInit {
   }
 
   getRoles() {
-    this.emloyeeService.getRoles().subscribe((res) => {
+    this.emloyeeService.getRoles().subscribe((res: any) => {
       if (res.statusCode === 200) {
         this.roles = res.data;
       }
@@ -124,7 +129,7 @@ export class EmployeeFormComponent implements OnInit {
   }
 
   getDepartments() {
-    this.emloyeeService.getDepartments().subscribe((res) => {
+    this.emloyeeService.getDepartments().subscribe((res: any) => {
       if (res.statusCode === 200) {
         this.departments = res.data;
       }
